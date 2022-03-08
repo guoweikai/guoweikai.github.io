@@ -86,14 +86,50 @@
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log((<span class="number">2</span>).constructor === <span class="built_in">Number</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log((<span class="literal">true</span>).constructor === <span class="built_in">Boolean</span>) <span class="comment">// true </span></span><br><span class="line"><span class="built_in">console</span>.log((<span class="string">&quot;str&quot;</span>).constructor === <span class="built_in">String</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log([].constructor === <span class="built_in">Array</span>) <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log((<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;).constructor === <span class="built_in">Function</span>)<span class="comment">// true </span></span><br><span class="line"><span class="built_in">console</span>.log((&#123;&#125;).constructor === <span class="built_in">Object</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 
-<p>constructor 有两个作用，一个是判断数据的类型，</p>
-<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><ol>
-<li><p>let const var 的区别<br>块级作用域： 块级作用域由 {} 包括，let 和 const 具有块级作用域，var 不存在块级作用域，块级作用域解决了es5 中的两个问题</p>
-<p>内存变量可能覆盖外层变量<br>用以计数的循环变量泄漏为全局变量</p>
-<p>变量提升：var 存在变量提升，let const 不存在变量提升，即变量只能在声明之后使用，否则会报错</p>
-<p>给全局添加属性: 浏览器的全局对象是 window, note 的全局对象是 global。 var声明的变量为全局变量 </p>
-</li>
+<p>constructor 有两个作用，一个是判断数据的类型，二是对象实例通过 constrcutor 对象访问它的构造函数。 需要注意， 如果创建一个对象来改变它的原型， constructor 就不能用来判断数据类型了</p>
+<ol start="4">
+<li>Object.prototype.toString.call()</li>
 </ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"><span class="built_in">console</span>.log(a.call(<span class="number">2</span>));</span><br><span class="line"><span class="built_in">console</span>.log(a.call(<span class="literal">true</span>));</span><br><span class="line"><span class="built_in">console</span>.log(a.call([]));</span><br><span class="line"><span class="built_in">console</span>.log(a.call(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;));</span><br><span class="line"><span class="built_in">console</span>.log(a.call(<span class="literal">undefined</span>));</span><br><span class="line"><span class="built_in">console</span>.log(a.call(<span class="literal">null</span>));</span><br></pre></td></tr></table></figure>
+<p>同样是检测对象 obj 调用 toString 方法， obj.toString 的结果和  Objec.prototype.toString.call(obj)的结果不一样，这是为什么？<br>这是因为 toString 是 Object 的原型方法， 而 Array 和 function 等类型作为 Object 的实例， 都重写了 toString 方法， 不同的对象类型<br>调用 toString方法时，根据原型链的知识，调用的是对应的重写之后的 toString 方法，(function 类型返回内容为函数体的字符串，Array 类型返回元素组成的字符串),<br>而不会去调用 Object 上原型toString 方法（返回对象的具体类型）， 所有采用 obj.toString() 不能得到其对象类型，只能将 obj 转换为字符串类型，因此，在想要得到对象的具体类型时，应该调用 Object 原型上的 toString 方法</p>
+<h3 id="判断数组的方式由哪些"><a href="#判断数组的方式由哪些" class="headerlink" title="判断数组的方式由哪些"></a>判断数组的方式由哪些</h3><p>通过 Object.prototype.toString.call()⬅️判断</p>
+<p>通过原型链做判断</p>
+<p>obj.<strong>proto</strong> === Array.prototype </p>
+<p>通过 es6 的 Array.isArray() 做判断</p>
+<p>Array.isArray(obj)</p>
+<p>通过 instanceof 做判断</p>
+<p>obj instanceof Array</p>
+<p>通过 Array.prototype.isPrototypeof</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.isPrototypeOf(obj) ? 这个稍后梳理一下</span><br></pre></td></tr></table></figure>
+
+<h3 id="null-和-undefined-区别"><a href="#null-和-undefined-区别" class="headerlink" title="null 和 undefined 区别"></a>null 和 undefined 区别</h3><p>首先 null 和 undefined 都是基本数据类型，这两个基本数据类型分别都只有一个值，就是 null 和 undefined </p>
+<p>undefined 代表的含义是未定义， null 代表的含义是空对象， 一般变量声明了但还没有定义的时候会返回undefined， null 主要用于复制给 一些可能会返回对象的变量，作为初始化</p>
+<p>undefined 在 js 中不是一个保留字，这意味着可以使用 undefined 来作为一个变量名， 但是这样的做法是非常危险的， 它会影响对 undefined 值的判断， 我们可以通过一些方法获取安全的 undefinded值， 比如 void 0</p>
+<p>当对这两种类型使用typeof 进行判断时。 Null类型会返回”object”,这是一个历史遗留的问题， 当使用双等号对两种类型的值进行比较时会返回 true， 使用三个等号时会返回false</p>
+<h3 id="typeof-null-的结果是什么，-为什么？"><a href="#typeof-null-的结果是什么，-为什么？" class="headerlink" title="typeof null 的结果是什么， 为什么？"></a>typeof null 的结果是什么， 为什么？</h3><p>typeof null 的结果是 Object</p>
+<p>在 JS 第一版本中，所有值都存储在 32 位的单元中，每个单元包含一个小的 类型标签（1-3 bits） 以及当前要存储值的真实数据. 类型标签存储在每个单元的低位中，共有五种数据类型</p>
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">000</span>:object  当前存储的数据指向一个对象</span><br><span class="line"><span class="number">1</span>:init - 当前存储的数据是一个 <span class="number">31</span> 位的有符号整数</span><br><span class="line"><span class="number">010</span>: double - 当前存储的数据指向一个双进度的浮点数</span><br><span class="line"><span class="number">100</span>: string - 当前存储的数据指向一个字符串</span><br><span class="line"><span class="number">110</span>: boolean - 当前存储的数据是布尔值</span><br></pre></td></tr></table></figure>
+如果最低位是1， 则类型标签标志位的长度只有一位； 如果最地位是 0， 则类型标签标志位的长度占三位， 为存储其他四种数据类型提供了额外两个 bit 的长度
+有两种特殊数据类型：
+</code></pre>
+<ul>
+<li>undefined 的值是 （-2）30（一个超出整数范围的数字）；</li>
+<li>null 的值是机器码 null 指针（null指针的值全是 0）；</li>
+</ul>
+<p>那也就是说 null 的类型标签也是 000， 和Object 的类型标签一样，所以会被判定为 object</p>
+<h3 id="instanceof-操作符的实现原理"><a href="#instanceof-操作符的实现原理" class="headerlink" title="instanceof 操作符的实现原理"></a>instanceof 操作符的实现原理</h3><pre><code>instanceof 运算符用于判断构造函数的prototype属性是否出现在对象的原型链中的
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myInstanceof</span>（<span class="title">left</span>，<span class="title">right</span>）</span>&#123;</span><br><span class="line">   <span class="comment">//  获取对象的原型</span></span><br><span class="line">    <span class="keyword">let</span> proto = <span class="built_in">Object</span>.getPrototypeOf(left);</span><br><span class="line">   <span class="comment">// 获取构造函数的 prototype 对象</span></span><br><span class="line">    <span class="keyword">let</span> prototype = right.prototype;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!proto) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(proto === prototype) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        proto = <span class="built_in">Object</span>.getPrototypeOf(proto)</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="为什么-0-1-0-2-！-0-3-如何让其相等"><a href="#为什么-0-1-0-2-！-0-3-如何让其相等" class="headerlink" title="为什么 0.1+0.2 ！== 0.3 如何让其相等"></a>为什么 0.1+0.2 ！== 0.3 如何让其相等</h3><h3 id="isNaN-和-Number-isNaN-函数的区别"><a href="#isNaN-和-Number-isNaN-函数的区别" class="headerlink" title="isNaN 和 Number.isNaN 函数的区别"></a>isNaN 和 Number.isNaN 函数的区别</h3><h3 id="什么是-js-中的包装类型"><a href="#什么是-js-中的包装类型" class="headerlink" title="什么是 js 中的包装类型"></a>什么是 js 中的包装类型</h3><pre><code>在 js 中， 基本类型是没有属性和方法的， 但是为了便于操作基本类型的值，在调用基本类型的属性或方法时 js 会在后台隐式地将
+</code></pre>
+<p>函数 isNaN</p>
+<hr>
+
+<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h3 id="let-const-var-的区别"><a href="#let-const-var-的区别" class="headerlink" title="let const var 的区别"></a>let const var 的区别</h3><p>   块级作用域： 块级作用域由 {} 包括，let 和 const 具有块级作用域，var 不存在块级作用域，块级作用域解决了es5 中的两个问题</p>
+<p>   内存变量可能覆盖外层变量<br>   用以计数的循环变量泄漏为全局变量</p>
+<p>   变量提升：var 存在变量提升，let const 不存在变量提升，即变量只能在声明之后使用，否则会报错</p>
+<p>   给全局添加属性: 浏览器的全局对象是 window, note 的全局对象是 global。 var声明的变量为全局变量 </p>
 
   </div>
   <div class="post-footer">
