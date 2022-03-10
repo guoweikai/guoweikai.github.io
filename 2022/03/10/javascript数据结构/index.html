@@ -6,7 +6,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   
-  <title>javascript基础 - blog</title>
+  <title>javascript数据结构 - blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   
   <meta name="keywords" content=生活,博客,前端,游戏>
@@ -49,10 +49,10 @@
 </header>
 <article class="post">
   <div class="post-title">
-    <h1 class="article-title">javascript基础</h1>
+    <h1 class="article-title">javascript数据结构</h1>
   </div>
    <div class="post-meta">
-    <span class="post-time">2022-03-07</span>
+    <span class="post-time">2022-03-10</span>
   </div>
   <div class="post-content">
     <p> <a target="_blank" rel="noopener" href="https://juejin.cn/post/6940945178899251230">链接地址</a></p>
@@ -127,11 +127,31 @@
 <h3 id="10-isNaN-和-Number-isNaN-函数的区别"><a href="#10-isNaN-和-Number-isNaN-函数的区别" class="headerlink" title="10 isNaN 和 Number.isNaN 函数的区别"></a>10 isNaN 和 Number.isNaN 函数的区别</h3><h3 id="11-操作运算符的强制类型转换规则"><a href="#11-操作运算符的强制类型转换规则" class="headerlink" title="11 == 操作运算符的强制类型转换规则"></a>11 == 操作运算符的强制类型转换规则</h3><ol>
 <li>首先会判断两者类型是否相同，相同的话就比较两者的大小</li>
 <li>类型不相投的话， 就会进行类型转换</li>
+<li>会先判断是否在对比 null 和 undefinded 是的话就会返回 true</li>
+<li>判断两者类型是否为 string 和 number ， 是的话就会将字符串转化为 number</li>
 </ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>==<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="number">1</span>==<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>判断其中一方是否为 boolean， 是的话就会把 boolean 转为 number， 再进行判断</li>
+<li>判断其中一方是否为 object 且另一方为 string number 或者 symbol  是的话就会把 object 转为原始类型再进行判断</li>
+</ol>
+<p>其流程图如下<br>具体可以看一下流程图</p>
 <h3 id="12-其他值到字符串的转换规则"><a href="#12-其他值到字符串的转换规则" class="headerlink" title="12 其他值到字符串的转换规则"></a>12 其他值到字符串的转换规则</h3><ul>
-<li>Null 和 Undefined 类型, null 转换为“null”</li>
-<li>Null 类型的值转换为 0</li>
+<li>Null 和 Undefined 类型, null 转换为“null”，undefined 转化为 “undefined”</li>
+<li>Boolean 类型， true 转化为 “true”， false 转化为 “false”</li>
+<li>Number类型的值直接转换， 但是只允许显式强制类型转换， 使用隐式强制类型转换会产生错误</li>
+<li>Symbol 类型的值转换， 但是只允许显式强制类型转换，使用隐式强制类型转换会产生报错</li>
+<li>对普通对象来说，除非自行定义 toString()方法， 否则会调用toString()<br>Object.prototype.toString() 来返回内部属性 [[Class]]的值， 如”[object Object]]”. 如果对象有自己的 tostring 方法， 字符串化时就会调用该方法并使用其返回值</li>
 </ul>
+<h3 id="13-其他到数字值的转化规则"><a href="#13-其他到数字值的转化规则" class="headerlink" title="13 其他到数字值的转化规则"></a>13 其他到数字值的转化规则</h3><ul>
+<li>Undefined 类型的值转换为 NaN</li>
+<li>Null 类型的值 转换为 0</li>
+<li>Boolean 类型的值。 true 转换为1， false转换为 0</li>
+<li>String 类型的值转换如同使用Number 函数进行转化， 如果包含非数字值则转化为 NaN， 空字符串为 0</li>
+<li>对象（包括数组）会首先被。。。。</li>
+</ul>
+<h3 id="14-其他值到布尔类型的值的转换规则"><a href="#14-其他值到布尔类型的值的转换规则" class="headerlink" title="14 其他值到布尔类型的值的转换规则"></a>14 其他值到布尔类型的值的转换规则</h3><p>以下这些是假值 undefined null NaN +0 -0 “”  false<br>从逻辑上说， 假值列表以外的都应该是真值</p>
+<h3 id="15-和-amp-amp-操作符的返回值"><a href="#15-和-amp-amp-操作符的返回值" class="headerlink" title="15 || 和 &amp;&amp; 操作符的返回值"></a>15 || 和 &amp;&amp; 操作符的返回值</h3><p>|| 和 &amp;&amp; 首先会对第一个操作数执行条件判断， 如果其不是布尔值就先强制转化为布尔类型， 然后再执行条件判断</p>
 <h3 id="18-JavasScript-中如何进行隐式类型转换"><a href="#18-JavasScript-中如何进行隐式类型转换" class="headerlink" title="18 JavasScript 中如何进行隐式类型转换"></a>18 JavasScript 中如何进行隐式类型转换</h3><h3 id="19-操作符什么时候用于字符串的拼接？"><a href="#19-操作符什么时候用于字符串的拼接？" class="headerlink" title="19 + 操作符什么时候用于字符串的拼接？"></a>19 + 操作符什么时候用于字符串的拼接？</h3><h3 id="20-为什么会有-bigInt-的提案"><a href="#20-为什么会有-bigInt-的提案" class="headerlink" title="20 为什么会有 bigInt 的提案"></a>20 为什么会有 bigInt 的提案</h3><h3 id="21-Object-assign-和扩展运算符是深拷贝还是浅拷贝，两者区别"><a href="#21-Object-assign-和扩展运算符是深拷贝还是浅拷贝，两者区别" class="headerlink" title="21 Object.assign() 和扩展运算符是深拷贝还是浅拷贝，两者区别"></a>21 Object.assign() 和扩展运算符是深拷贝还是浅拷贝，两者区别</h3><p>扩展运算符：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> outObj = &#123;<span class="attr">inObj</span>:&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="keyword">let</span> newObj = <span class="built_in">Object</span>.assign(...outObj)</span><br><span class="line">newObj.inObj.a = <span class="number">2</span></span><br><span class="line"><span class="built_in">console</span>.log(outObj)</span><br></pre></td></tr></table></figure>
 <p>Object.assign():</p>
@@ -140,28 +160,6 @@
 <blockquote>
 <p>Object.assign()方法接收的第一个参数作为目标对象，后面的所有参数作为源对象。然后把所有的源对象合并到目标对象中。它会修改了一个对象，因此会触发 ES6 setter。<br>扩展操作符（…）使用它时，数组或对象中的每一个值都会被拷贝到一个新的数组或对象中。它不复制继承的属性或类的属性，但是它会复制ES6的 symbols 属性。</p>
 </blockquote>
-<p>** 类型的考察基本就这些**</p>
-<hr>
-
-<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h3 id="let-const-var-的区别"><a href="#let-const-var-的区别" class="headerlink" title="let const var 的区别"></a>let const var 的区别</h3><p>   块级作用域： 块级作用域由 {} 包括，let 和 const 具有块级作用域，var 不存在块级作用域，块级作用域解决了es5 中的两个问题</p>
-<ul>
-<li>内存变量可能覆盖外层变量</li>
-<li>用以计数的循环变量泄漏为全局变量<br>变量提升：var 存在变量提升，let const 不存在变量提升，即变量只能在声明之后使用，否则会报错</li>
-</ul>
-<p>   给全局添加属性: 浏览器的全局对象是 window, note 的全局对象是 global。 var声明的变量为全局变量,并且会将该变量添加为全局对象的属性，但是 let 和const 不会</p>
-<p>   重复声明： var 声明变量时，可以重复声明变量，后声明的同名变量会覆盖之前声明的变量. const 和let 不允许重复声明变量</p>
-<p>   暂时性死去： 在使用 let const 命令声明变量之前，该变量都是不可用的。这在语法上，称为暂时性死区， 使用var 声明的变量不存在暂时性死区</p>
-<p>   初始值设置： 在变量声明时，var 和 let 可以不用设置初始值。 而 const 声明变量必须设置初始值<br>   指针指向： let 和const 都是 es6 新增的用于创建变量的关键字，let 创建的变量是可以更改指针指向（可以重新赋值），但是 const 声明的变量是不允许改变指针的指向</p>
-<h3 id="const-对象的属性可以修改吗"><a href="#const-对象的属性可以修改吗" class="headerlink" title="const 对象的属性可以修改吗"></a>const 对象的属性可以修改吗</h3><p>   const 保证的并不是变量的值不能改动， 而是变量指向的那个内存地址不能改动。 对于基本类型的数据（数值，字符串，布尔值， null，undefined）,其值就保存在变量指向的那个内存地址，因此等同于常量</p>
-<p>   但对于引用类型的数据（主要是对象和数组）来说，变量指向数据的内存地址，保存的只是一个指针，const 只能保证这个指针式固定不变的， 至于它指向的数据结构是不是可变的，就完全不能控制了。</p>
-<pre><code>### 如果 new 一个箭头函数的话会怎么样
-
-箭头函数是 es6 中提出来的， 它没有 prototype， 也没有自己的 this 指向， 更不可以使用 arguments 参数， 所以不能 new 一个箭头函数
-</code></pre>
-<h1 id="JavaScript-基础"><a href="#JavaScript-基础" class="headerlink" title="JavaScript 基础"></a>JavaScript 基础</h1><h1 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h1><ol>
-<li>js中栈和堆的概念和区别？<a target="_blank" rel="noopener" href="https://juejin.cn/post/6854573215327617031">链接地址</a></li>
-<li>this 和指针有关系吗？this也是指针</li>
-</ol>
 
   </div>
   <div class="post-footer">
