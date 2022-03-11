@@ -55,7 +55,64 @@
     <span class="post-time">2022-03-10</span>
   </div>
   <div class="post-content">
-    
+    <h3 id="1-new-操作符的实现原理"><a href="#1-new-操作符的实现原理" class="headerlink" title="1. new 操作符的实现原理"></a>1. new 操作符的实现原理</h3><ul>
+<li>首先创建一个空对象</li>
+<li>设置原型，将对象的原型设置为函数的 prototype对象</li>
+<li>让函数的this 指向这个对象，执行构造函数的代码</li>
+<li>判断函数的返回值类型，如果是值类型，返回创建的对象，如果是引用类型，就返回这个引用类型的对象(这个地方有疑惑)</li>
+</ul>
+<p>具体实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ojbectFactory</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> newObject = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">let</span> <span class="title">constructor</span> = <span class="title">Array</span>.<span class="title">prototype</span>.<span class="title">shift</span>.<span class="title">call</span>(<span class="params"><span class="built_in">arguments</span></span>);</span><br><span class="line">        <span class="keyword">let</span> result = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="title">constructor</span> ! == &quot;<span class="title">function</span>&quot;)&#123;</span><br><span class="line">            <span class="built_in">console</span>.error(<span class="string">&quot;type error&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        newObject = <span class="built_in">Object</span>.create(<span class="title">constructor</span>.<span class="title">prototype</span>);</span><br><span class="line">        result = <span class="title">constructor</span>.<span class="title">apply</span>(<span class="params">newObject,<span class="built_in">arguments</span></span>);</span><br><span class="line">          <span class="comment">// 判断返回对象</span></span><br><span class="line">  <span class="keyword">let</span> flag = result &amp;&amp; (<span class="keyword">typeof</span> result === <span class="string">&quot;object&quot;</span> || <span class="keyword">typeof</span> result === <span class="string">&quot;function&quot;</span>);</span><br><span class="line">  <span class="comment">// 判断返回结果</span></span><br><span class="line">  <span class="keyword">return</span> flag ? result : newObject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 使用方法</span></span><br><span class="line">objectFactory(构造函数, 初始化参数);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-map-和-Object-的区别"><a href="#2-map-和-Object-的区别" class="headerlink" title="2 map 和 Object 的区别"></a>2 map 和 Object 的区别</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Map</th>
+<th>Object</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>意外的健</td>
+<td>Map默认情况不包含任何健，只包含显示插入的健</td>
+<td>Object 有一个原型, 原型链上的键名有可能和自己在对象上的设置的键名产生冲突。</td>
+</tr>
+<tr>
+<td>键的类型</td>
+<td>Map的键可以是任意值，包括函数、对象或任意基本类型。</td>
+<td>Object 的键必须是 String 或是Symbol。</td>
+</tr>
+<tr>
+<td>键的顺序</td>
+<td>Map 中的 key 是有序的。因此，当迭代的时候， Map 对象以插入的顺序返回键值。</td>
+<td>Object 的键是无序的</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Map 的键值对个数可以轻易地通过size 属性获取</td>
+<td>Object 的键值对个数只能手动计算</td>
+</tr>
+<tr>
+<td>迭代</td>
+<td>Map 的键值对个数可以轻易地通过size 属性获取</td>
+<td>Object 的键值对个数只能手动计算</td>
+</tr>
+</tbody></table>
+<h3 id="3-map和weakMap的区别"><a href="#3-map和weakMap的区别" class="headerlink" title="3 map和weakMap的区别"></a>3 map和weakMap的区别</h3><h3 id="4-JavaScript有哪些内置对象"><a href="#4-JavaScript有哪些内置对象" class="headerlink" title="4 JavaScript有哪些内置对象"></a>4 JavaScript有哪些内置对象</h3><p>全局的对象（ global objects ）或称标准内置对象，不要和 “全局对象（global object）” 混淆。这里说的全局的对象是说在 全局作用域里的对象。全局作用域中的其他对象可以由用户的脚本创建或由宿主程序提供。</p>
+<p>标准内置对象的分类：</p>
+<p>（1）值属性，这些全局属性返回一个简单值，这些值没有自己的属性和方法。例如 Infinity、NaN、undefined、null 字面量<br>（2）函数属性，全局函数可以直接调用，不需要在调用时指定所属对象，执行结束后会将结果直接返回给调用者。例如 eval()、parseFloat()、parseInt() 等<br>（3）基本对象，基本对象是定义或使用其他对象的基础。基本对象包括一般对象、函数对象和错误对象。例如 Object、Function、Boolean、Symbol、Error 等<br>（4）数字和日期对象，用来表示数字、日期和执行数学计算的对象。例如 Number、Math、Date<br>（5）字符串，用来表示和操作字符串的对象。例如 String、RegExp<br>（6）可索引的集合对象，这些对象表示按照索引值来排序的数据集合，包括数组和类型数组，以及类数组结构的对象。例如 Array<br>（7）使用键的集合对象，这些集合对象在存储数据时会使用到键，支持按照插入顺序来迭代元素。<br>例如 Map、Set、WeakMap、WeakSet<br>（8）矢量集合，SIMD 矢量集合中的数据会被组织为一个数据序列。<br>例如 SIMD 等<br>（9）结构化数据，这些对象用来表示和操作结构化的缓冲区数据，或使用 JSON 编码的数据。例如 JSON 等<br>（10）控制抽象对象<br>例如 Promise、Generator 等<br>（11）反射。例如 Reflect、Proxy<br>（12）国际化，为了支持多语言处理而加入 ECMAScript 的对象。例如 Intl、Intl.Collator 等<br>（13）WebAssembly<br>（14）其他。例如 arguments</p>
+<p>总结：<br>js 中的内置对象主要指的是在程序执行前存在全局作用域里的由 js 定义的一些全局值属性、函数和用来实例化其他对象的构造函数对象。一般经常用到的如全局变量值 NaN、undefined，全局函数如 parseInt()、parseFloat() 用来实例化对象的构造函数如 Date、Object 等，还有提供数学计算的单体内置对象如 Math 对象</p>
+<h3 id="5-常用的正则表达式有哪些"><a href="#5-常用的正则表达式有哪些" class="headerlink" title="5. 常用的正则表达式有哪些?"></a>5. 常用的正则表达式有哪些?</h3><h3 id="6-对JSON的理解"><a href="#6-对JSON的理解" class="headerlink" title="6. 对JSON的理解"></a>6. 对JSON的理解</h3><p>JSON 是一种基于文本的轻量级的数据交换格式。它可以被任何的编程语言读取和作为数据格式来传递。<br>在项目开发中，使用 JSON 作为前后端数据交换的方式。在前端通过将一个符合 JSON 格式的数据结构序列化为<br>JSON 字符串，然后将它传递到后端，后端通过 JSON 格式的字符串解析后生成对应的数据结构，以此来实现前后端数据的一个传递。<br>因为 JSON 的语法是基于 js 的，因此很容易将 JSON 和 js 中的对象弄混，但是应该注意的是 JSON 和 js 中的对象不是一回事，JSON 中对象格式更加严格，比如说在 JSON 中属性值不能为函数，不能出现 NaN 这样的属性值等，因此大多数的 js 对象是不符合 JSON 对象的格式的。<br>在 js 中提供了两个函数来实现 js 数据结构和 JSON 格式的转换处理，</p>
+<p>JSON.stringify 函数，通过传入一个符合 JSON 格式的数据结构，将其转换为一个 JSON 字符串。如果传入的数据结构不符合 JSON 格式，那么在序列化的时候会对这些值进行对应的特殊处理，使其符合规范。在前端向后端发送数据时，可以调用这个函数将数据对象转化为 JSON 格式的字符串。<br>JSON.parse() 函数，这个函数用来将 JSON 格式的字符串转换为一个 js 数据结构，如果传入的字符串不是标准的 JSON 格式的字符串的话，将会抛出错误。当从后端接收到 JSON 格式的字符串时，可以通过这个方法来将其解析为一个 js 数据结构，以此来进行数据的访问</p>
+<h3 id="7-js-脚本延迟加载的方法有哪些"><a href="#7-js-脚本延迟加载的方法有哪些" class="headerlink" title="7 js 脚本延迟加载的方法有哪些"></a>7 js 脚本延迟加载的方法有哪些</h3><h3 id="8-js-类数组对象的定义"><a href="#8-js-类数组对象的定义" class="headerlink" title="8 js 类数组对象的定义"></a>8 js 类数组对象的定义</h3><h3 id="9-数组有哪些原生方法"><a href="#9-数组有哪些原生方法" class="headerlink" title="9 数组有哪些原生方法"></a>9 数组有哪些原生方法</h3><h3 id="s"><a href="#s" class="headerlink" title="s"></a>s</h3><h3 id="疑惑点"><a href="#疑惑点" class="headerlink" title="疑惑点"></a>疑惑点</h3><ol>
+<li><p> new 最后一步</p>
+</li>
+<li><p>迭代是什么意思，迭代器是什么？ </p>
+</li>
+<li><p> 数据的传输是json 格式的字符串</p>
+</li>
+</ol>
+
   </div>
   <div class="post-footer">
     

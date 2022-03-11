@@ -152,7 +152,24 @@
 </ul>
 <h3 id="14-其他值到布尔类型的值的转换规则"><a href="#14-其他值到布尔类型的值的转换规则" class="headerlink" title="14 其他值到布尔类型的值的转换规则"></a>14 其他值到布尔类型的值的转换规则</h3><p>以下这些是假值 undefined null NaN +0 -0 “”  false<br>从逻辑上说， 假值列表以外的都应该是真值</p>
 <h3 id="15-和-amp-amp-操作符的返回值"><a href="#15-和-amp-amp-操作符的返回值" class="headerlink" title="15 || 和 &amp;&amp; 操作符的返回值"></a>15 || 和 &amp;&amp; 操作符的返回值</h3><p>|| 和 &amp;&amp; 首先会对第一个操作数执行条件判断， 如果其不是布尔值就先强制转化为布尔类型， 然后再执行条件判断</p>
-<h3 id="18-JavasScript-中如何进行隐式类型转换"><a href="#18-JavasScript-中如何进行隐式类型转换" class="headerlink" title="18 JavasScript 中如何进行隐式类型转换"></a>18 JavasScript 中如何进行隐式类型转换</h3><h3 id="19-操作符什么时候用于字符串的拼接？"><a href="#19-操作符什么时候用于字符串的拼接？" class="headerlink" title="19 + 操作符什么时候用于字符串的拼接？"></a>19 + 操作符什么时候用于字符串的拼接？</h3><h3 id="20-为什么会有-bigInt-的提案"><a href="#20-为什么会有-bigInt-的提案" class="headerlink" title="20 为什么会有 bigInt 的提案"></a>20 为什么会有 bigInt 的提案</h3><h3 id="21-Object-assign-和扩展运算符是深拷贝还是浅拷贝，两者区别"><a href="#21-Object-assign-和扩展运算符是深拷贝还是浅拷贝，两者区别" class="headerlink" title="21 Object.assign() 和扩展运算符是深拷贝还是浅拷贝，两者区别"></a>21 Object.assign() 和扩展运算符是深拷贝还是浅拷贝，两者区别</h3><p>扩展运算符：</p>
+<h3 id="16-Objet-is-与比较操作符-“-“，-”-”-的区别"><a href="#16-Objet-is-与比较操作符-“-“，-”-”-的区别" class="headerlink" title="16 Objet.is() 与比较操作符 “===“， ”==” 的区别"></a>16 Objet.is() 与比较操作符 “===“， ”==” 的区别</h3><ul>
+<li>使用双等号（==） 进行相等判断时，如果两边的类型不一致，则会进行强制类型转化后再进行比较</li>
+<li>使用三等号（===）进行相等判断时， 如果两边的类型不一致时， 不会做强制类型转换，直接返回 false</li>
+<li>使用 Object.is 来进行相等判断时，它处理了一些特殊的情况， 比如 -0 和 +0  不能相等， 两个 NaN 是相等的</li>
+</ul>
+<h3 id="17-什么是-JavaScript-中的包装类型？"><a href="#17-什么是-JavaScript-中的包装类型？" class="headerlink" title="17 什么是 JavaScript 中的包装类型？"></a>17 什么是 JavaScript 中的包装类型？</h3><p>在 JavaScript 中， 基本类型是没有属性和方法的， 但是为了便于操作基本类型的值，在调用基本类型的属性或方法时JavaScript 会在后台隐式地将基本类型的值转换为对象如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="string">&quot;abc&quot;</span></span><br><span class="line">a.length;<span class="comment">//3</span></span><br><span class="line">a.toUpperCase();<span class="comment">//&quot;ABC&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在访问 “abc”.length 时， JavaScript 将 “abc” 在后台转化为 String（“abc”），然后再访问其 length 属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;abc&quot;</span></span><br><span class="line"><span class="built_in">Object</span>(a) <span class="comment">// string&#123;&quot;abc&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>也可以使用 valueOf 方法将包装类型倒转成基本类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;abc&quot;</span></span><br><span class="line"><span class="keyword">var</span> b  = <span class="built_in">Object</span>(a)</span><br><span class="line"><span class="keyword">var</span> c = b.valueOf()</span><br></pre></td></tr></table></figure>
+<p>看看如下代卖会打印什么：</p>
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  a = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>)</span><br><span class="line"><span class="keyword">if</span>(!a)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Oops&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>答案是什么都不会打印，因为虽然包裹的基本类型是false，但是false被包裹成包装类型后就成了对象，所以其非值为false，所以循环体中的内容不会运行。</p>
+<h3 id="18-JavasScript-中如何进行隐式类型转换"><a href="#18-JavasScript-中如何进行隐式类型转换" class="headerlink" title="18 JavasScript 中如何进行隐式类型转换"></a>18 JavasScript 中如何进行隐式类型转换</h3><p>首先要介绍 ToPrimitive 方法， 这是 js </p>
+<h3 id="19-操作符什么时候用于字符串的拼接？"><a href="#19-操作符什么时候用于字符串的拼接？" class="headerlink" title="19 + 操作符什么时候用于字符串的拼接？"></a>19 + 操作符什么时候用于字符串的拼接？</h3><h3 id="20-为什么会有-bigInt-的提案"><a href="#20-为什么会有-bigInt-的提案" class="headerlink" title="20 为什么会有 bigInt 的提案"></a>20 为什么会有 bigInt 的提案</h3><p>JavaScript中Number.MAX_SAFE_INTEGER表示最⼤安全数字，计算结果是9007199254740991，即在这个数范围内不会出现精度丢失（⼩数除外）。但是⼀旦超过这个范围，js就会出现计算不准确的情况，这在⼤数计算的时候不得不依靠⼀些第三⽅库进⾏解决，因此官⽅提出了BigInt来解决此问题。### 21 Object.assign() 和扩展运算符是深拷贝还是浅拷贝，两者区别</p>
+<p>扩展运算符：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> outObj = &#123;<span class="attr">inObj</span>:&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="keyword">let</span> newObj = <span class="built_in">Object</span>.assign(...outObj)</span><br><span class="line">newObj.inObj.a = <span class="number">2</span></span><br><span class="line"><span class="built_in">console</span>.log(outObj)</span><br></pre></td></tr></table></figure>
 <p>Object.assign():</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> outObj = &#123;</span><br><span class="line">  <span class="attr">inObj</span>: &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> newObj = <span class="built_in">Object</span>.assign(&#123;&#125;, outObj)</span><br><span class="line">newObj.inObj.a = <span class="number">2</span></span><br><span class="line"><span class="built_in">console</span>.log(outObj) </span><br></pre></td></tr></table></figure>
@@ -160,6 +177,11 @@
 <blockquote>
 <p>Object.assign()方法接收的第一个参数作为目标对象，后面的所有参数作为源对象。然后把所有的源对象合并到目标对象中。它会修改了一个对象，因此会触发 ES6 setter。<br>扩展操作符（…）使用它时，数组或对象中的每一个值都会被拷贝到一个新的数组或对象中。它不复制继承的属性或类的属性，但是它会复制ES6的 symbols 属性。</p>
 </blockquote>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p> Object.is(-1,1)</p>
+<p>Object.prototype.valueOf()</p>
+<p>valueof()方法返回指定对象的原始值</p>
+<p>语法：<br>object.valueof()</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">对象的方法详解</a></p>
 
   </div>
   <div class="post-footer">
