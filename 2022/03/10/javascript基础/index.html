@@ -130,8 +130,86 @@
 <h3 id="9-数组有哪些原生方法"><a href="#9-数组有哪些原生方法" class="headerlink" title="9 数组有哪些原生方法"></a>9 数组有哪些原生方法</h3><blockquote>
 <p>数组和字符串的转换方法,toString(), toLocalString(), join() 其中 join() 方法可以指定转换为字符串的分隔符.<br>数组尾部操作的方法 pop() 和 push() ,push 方法可以传入多个参数<br>数组首部操作的方法 shift() 和 unshift 重排序的方法 reverse() 和 sort(), sort() 方法可以传入一个函数来进行比较,传入前后两个值,如果返回值为正数,则交换两个参数的位置<br>数组连接的方法 concat(), 返回的是拼接好的数组,不影响原数组,传入的参数可以是数组也可以是字符串,可以传入多个参数<br>数组截取方法 slice,用于截取数组中的一部分返回,<br>数组插入方法 splice(), 影响原数组</p>
 </blockquote>
-<h3 id="13-什么是-DOM-和-BOM？"><a href="#13-什么是-DOM-和-BOM？" class="headerlink" title="13. 什么是 DOM 和 BOM？"></a>13. 什么是 DOM 和 BOM？</h3><p>dom 指的是文档对象模型,它指的是把文档当做一个对象,这个对象主要定义了处理网页内容的方法和接口<br>bom 指的是浏览器对象模型, 它指的是把浏览器当做一个对象来对待, 这个对象主要定义了与浏览器进行交互的方法和接口. bom 的核心是 window , 而 window 对象具有双重角色, 它既是 通过 js 访问浏览器窗口的一个接口, 有事一个 global(全局)对象</p>
-<h3 id="14-对类数组对象的理解-如何转化为数组"><a href="#14-对类数组对象的理解-如何转化为数组" class="headerlink" title="14 对类数组对象的理解,如何转化为数组"></a>14 对类数组对象的理解,如何转化为数组</h3><h3 id="疑惑点"><a href="#疑惑点" class="headerlink" title="疑惑点"></a>疑惑点</h3><ol>
+<h3 id="10-Unicode、UTF-8、UTF-16、UTF-32的区别？"><a href="#10-Unicode、UTF-8、UTF-16、UTF-32的区别？" class="headerlink" title="10 Unicode、UTF-8、UTF-16、UTF-32的区别？"></a>10 Unicode、UTF-8、UTF-16、UTF-32的区别？</h3><h3 id="12-为什么函数的-arguments-参数是类数组而不是数组？如何遍历类数组"><a href="#12-为什么函数的-arguments-参数是类数组而不是数组？如何遍历类数组" class="headerlink" title="12. 为什么函数的 arguments 参数是类数组而不是数组？如何遍历类数组?"></a>12. 为什么函数的 arguments 参数是类数组而不是数组？如何遍历类数组?</h3><h3 id="13-什么是-DOM-和-BOM？"><a href="#13-什么是-DOM-和-BOM？" class="headerlink" title="13. 什么是 DOM 和 BOM？"></a>13. 什么是 DOM 和 BOM？</h3><p>dom 指的是文档对象模型,它指的是把文档当做一个对象,这个对象主要定义了处理网页内容的方法和接口<br>bom 指的是浏览器对象模型, 它指的是把浏览器当做一个对象来对待, 这个对象主要定义了与浏览器进行交互的方法和接口. bom 的核心是 window , 而 window 对象具有双重角色, 它既是 通过 js 访问浏览器窗口的一个接口, 有事一个 global(全局)对象</p>
+<h3 id="14-对类数组对象的理解-如何转化为数组"><a href="#14-对类数组对象的理解-如何转化为数组" class="headerlink" title="14 对类数组对象的理解,如何转化为数组"></a>14 对类数组对象的理解,如何转化为数组</h3><p>  具体可以看问题 8 </p>
+<h3 id="15-escape、encodeURI、encodeURIComponent-的区别"><a href="#15-escape、encodeURI、encodeURIComponent-的区别" class="headerlink" title="15 escape、encodeURI、encodeURIComponent 的区别"></a>15 escape、encodeURI、encodeURIComponent 的区别</h3><ul>
+<li>encodeURI 是对整个 URI 进行转义，将 URI 中的非法字符转换为合法字符，所以对于一些在 URI 中有特殊意义的字符不会进行转义。<br>encodeURIComponent 是对 URI 的组成部分进行转义，所以一些特殊字符也会得到转义。<br>escape 和 encodeURI 的作用相同，不过它们对于 unicode 编码为 0xff 之外字符的时候会有区别，escape 是直接在字符的 unicode 编码前加上 %u，而 encodeURI 首先会将字符转换为 UTF-8 的格式，再在每个字节前加上 %。</li>
+</ul>
+<h3 id="16-对-ajax-的理解-实现一个-ajax-请求"><a href="#16-对-ajax-的理解-实现一个-ajax-请求" class="headerlink" title="16 对 ajax 的理解,实现一个 ajax 请求"></a>16 对 ajax 的理解,实现一个 ajax 请求</h3><p>AJAX是 Asynchronous JavaScript and XML 的缩写,指的是通过 javascript 异步通信,从服务器获取 xml文档从中提取数据,再更新到当前页面的对应部分,而不用刷新这个页面</p>
+<p>步骤:</p>
+<ol>
+<li><p>XMLHttpRequest对象 (xhr):浏览器提供的 js 对象,可以请求服务器上的数据</p>
+</li>
+<li><p>使用 xhr 发送 get 请求<br>(1) 创建 一个 xhr 对象,一个请求的主体<br>(2) 调用 xhr 的 open函数,参数分别为请求类型和请求主体<br>(3) 调用 xhr 的 send 函数,发起请求<br>(4) 监听 onreadstatechange 事件(请求状态被改变时)<br>请求状态：readyState(4)<br>响应状态：status(200)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  xhr = <span class="keyword">var</span> XMLHttpRequest()</span><br><span class="line">    xhr.open(<span class="string">&quot;方式&quot;</span>,url)</span><br><span class="line">    xhr.send()</span><br><span class="line">    xhr.onreadstatechange =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>  &amp;&amp;  xhr.status == <span class="number">200</span>)&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(xhr.responseText)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>3、xhr对象的readyState属性：当前Ajax请求所处的状态</p>
+<p>0    UNSENT    XMLHttpRequest对象已被创建，但未调用open方法<br>1    OPENED    open方法已调用<br>2    HEADERS_RECEIVED    send方法已调用，响应头已经被接收<br>3    LOADING    数据接受中，此时response属性中已经包含部分数据<br>4    DONE    Ajax请求完成，数据已经彻底完成或失败</p>
+<p>4、使用xhr对象发起带参数的get请求<br>(1) 为 url 地址指定参数即可, url 拼接到后面的参数称为”查询字符串”<br>(2) 查询字符串的格式为: 在 url之后添加问号(?),参数以键值对方式存在<br>（3）get请求方式的本质，需要携带参数时，都是以查询字符串的方式提交参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;请求路径?id=1&#x27;</span>)</span><br><span class="line">xhr.send()</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(xhr.responseText)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、URL编码（URL只包括英文字母、符号、数字）<br>（1）中文需要编码（转义）<br>（2）编码原则：使用安全字符(英文字符等)表示不安全字符(中文等)，中文字符使用英文字符表示的话是三组%<br>（3）对URL编码与解码</p>
+<ul>
+<li>编码：encodeURI(要编码的内容)</li>
+<li>解码：decodeURI(要解码的内容)</li>
+<li>浏览器会自己对中文进行编码和解码<br>6、使用xhr发起post请求</li>
+</ul>
+<p>（1）创建xhr对象</p>
+<p>（2）调用open()函数，指定请求方式和URL地址</p>
+<p>（3）调用setRequestheader()，设置Content-Type属性（固定写法，必须写在open之后）</p>
+<p>（4）xhr.send()，指定要发送的数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;请求路径&#x27;</span>)</span><br><span class="line">xhr.setRequestheader(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>)</span><br><span class="line">xhr.send(<span class="string">&#x27;数据=值&amp;数据=值)</span></span><br><span class="line"><span class="string">xhr.onreadystatechange = function() &#123;</span></span><br><span class="line"><span class="string">  if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) &#123;</span></span><br><span class="line"><span class="string">    console.log(xhr.responseText)</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>7、数据交换格式<br>服务器端返回的数据格式是字符串，为了更好的提取返回的信息，返回的字符串有一些特定的格式：XML、JSON</p>
+<ul>
+<li>XML：标签格式</li>
+<li>JSON：像数组、对象的格式</li>
+</ul>
+<p>8、XML可扩展的标记语言<br>HTML和XML没有关系</p>
+<p>HTML是网页内容的载体，XML是用来传输数据的，是数据的载体</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;note&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">to</span>&gt;</span>ls<span class="tag">&lt;/<span class="name">to</span>&gt;</span></span></span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">from</span>&gt;</span>zs<span class="tag">&lt;/<span class="name">from</span>&gt;</span></span></span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">heading</span>&gt;</span>通知<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></span></span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span>开会<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line">&lt;/note&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>XML缺点：格式臃肿，和数据无关代码多，传输效率低；在JS中解析XML比较麻烦</p>
+<p>9、JSON（本质是字符串，是一种具有对象或者数组格式的字符串，也是一种轻量级的文本数据交换格式，更小更快更易解析）</p>
+<p>1）JSON的两种结构：</p>
+<p>数组&amp;字符串(key必须用英文双印包裹，value只有数字、字符串、布尔值、null、数组、对象6种类型)；数组取值也只有这6种类型</p>
+<p>（2）JSON语法注意事项</p>
+<p>属性名必须使用双引号包裹；字符串都必须使用双引号；JSON中不能写注释；JSON最外层必须是数组或对象格式；JSON中不允许有undefined和函数等数据</p>
+<p>（3）（序列化）JSON字符串转化为JS对象：JSON.parse(json字符串)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;&#123;&quot;a&quot;: &quot;hello&quot;, &quot;b&quot;: &quot;world&quot;&#125;&#x27;</span>  <span class="comment">//注意格式</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(str))  <span class="comment">// &#123;a: &quot;hello&quot;, b: &quot;world&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>（4）（反序列化）JSON对象转化为JSON字符串：JSON.stringify(js对象)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = &#123;<span class="attr">a</span>: <span class="string">&quot;hello&quot;</span>, <span class="attr">b</span>: <span class="string">&quot;world&quot;</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(str))  <span class="comment">// &#123;&quot;a&quot;:&quot;hello&quot;,&quot;b&quot;:&quot;world&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>11、XMLHttpRequest Level2<br> 新功能: 可以设置HTTP请求时限;可使用FormData对象管理表单数据；可以上传文件;可以获取数据传输的进度信息;<br> (1). 设置http请求时限（timeout属性）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    xhr.timeout = <span class="number">3000</span></span><br><span class="line"><span class="comment">// 请求超时后，会触发超时回调函数，告诉用户请求超时</span></span><br><span class="line">xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&#x27;请求超时了&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）FormData对象管理表单数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// post请求</span></span><br><span class="line"><span class="comment">// 创建FormData实例</span></span><br><span class="line"><span class="keyword">var</span> fd = <span class="keyword">new</span> FormData()</span><br><span class="line">fd.append(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;zs&#x27;</span>)</span><br><span class="line">fd.append(<span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;20&#x27;</span>)</span><br><span class="line">xhr.send(fd)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fd = <span class="keyword">new</span> FormData()</span><br><span class="line"><span class="comment">// 向fd中添加数据</span></span><br><span class="line">fd.append(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;zs&#x27;</span>)</span><br><span class="line"><span class="comment">// fd.get(数据名)  获取表单fd中对应的值</span></span><br><span class="line"><span class="built_in">console</span>.log(fd.get(<span class="string">&#x27;name&#x27;</span>)) <span class="comment">// zs</span></span><br><span class="line"><span class="comment">// 给一个键值对添加多个值</span></span><br><span class="line">fd.append(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;ls&#x27;</span>)</span><br><span class="line"><span class="comment">// fd中一个数据有多个值时，fd.get(数据名)获取到第一个值</span></span><br><span class="line"><span class="built_in">console</span>.log(fd.get(<span class="string">&#x27;name&#x27;</span>)) <span class="comment">// zs</span></span><br><span class="line"><span class="comment">// fd中获取同一个数据的多个值时：fd.getAll(数据名)</span></span><br><span class="line"><span class="built_in">console</span>.log(fd.getAll(<span class="string">&#x27;name&#x27;</span>)) <span class="comment">// [&#x27;zs&#x27;, &#x27;ls&#x27;]</span></span><br><span class="line"><span class="comment">// 使用set可重置fd中对应数据的值</span></span><br><span class="line">fd.set(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;ww&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(fd.get(<span class="string">&#x27;name&#x27;</span>)) <span class="comment">// ww</span></span><br><span class="line"><span class="comment">// 删除fd中某个元素</span></span><br><span class="line">fd.delete(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(fd.get(<span class="string">&#x27;name&#x27;</span>)) <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+<p>(3) 上传文件功能</p>
+<ul>
+<li>定义 ui 结构;</li>
+<li>验证是否选择了文件;</li>
+<li>向 fromData 中追加文件;</li>
+<li>使用 xhr 进行上传文件请求;</li>
+<li>监听 onreadystatechange </li>
+</ul>
+<p>获取表单提交的文件：dom.files，如果有文件选中，则长度不为0</p>
+<p>(4) 显示文件上传进度：监听xhr.upload.onprogress事件</p>
+<p>e.lengthComputable 若为true，才可计算长度</p>
+<p>e.loaded 已经传输的字符</p>
+<p>e.total 需传输的总字节</p>
+<p>传输进度 = Math.ceil(e.loaded / e.total * 100) + ‘%’</p>
+<p>(5）jquery实现文件上传<br>上传文件时必须要设置两个参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 是否转化为查询字符串</span></span><br><span class="line"><span class="attr">processData</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="comment">// 发送到服务器端的数据类型</span></span><br><span class="line"><span class="attr">contentType</span>: <span class="literal">false</span>,</span><br></pre></td></tr></table></figure>
+<p>可用ajaxStart和ajaxStop设置加载效果</p>
+<p>ajaxStart()：请求开始时运行的函数（只能被$(document)调用）</p>
+<p>ajaxStop()：请求完成时运行的函数（只能被$(document)调用）</p>
+<p>也可用beforeSend和complete代替，更好用</p>
+<p>12、axios：网络数据请求，比jquery更轻量，只专注于网络请求</p>
+<p>（1）axios发起get请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">&#x27;url&#x27;</span>, &#123; <span class="attr">params</span>: &#123; <span class="comment">/*参数*/</span> &#125; &#125;).then(callback)</span><br></pre></td></tr></table></figure>
+<p>（2）axios发起post请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.post(<span class="string">&#x27;url&#x27;</span>, &#123; <span class="attr">data</span>: &#123; <span class="comment">/*参数*/</span> &#125; &#125;).then(callback)</span><br></pre></td></tr></table></figure>
+<h3 id="疑惑点"><a href="#疑惑点" class="headerlink" title="疑惑点"></a>疑惑点</h3><ol>
 <li><p> new 最后一步</p>
 </li>
 <li><p>迭代是什么意思，迭代器是什么？  </p>
@@ -139,7 +217,11 @@
 </li>
 <li><p> 数据的传输是json 格式的字符串</p>
 </li>
+<li><p>问题 uri 和 url 的区别</p>
+</li>
 </ol>
+<p>url +urn   =uri</p>
+<p>uri 是 url 的超级</p>
 
   </div>
   <div class="post-footer">
