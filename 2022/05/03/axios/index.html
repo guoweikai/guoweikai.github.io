@@ -55,7 +55,29 @@
     <span class="post-time">2022-05-03</span>
   </div>
   <div class="post-content">
-    
+    <p>文档链接请点击<a target="_blank" rel="noopener" href="http://www.axios-js.com/zh-cn/docs/">此处</a></p>
+<h3 id="1-什么是-axios"><a href="#1-什么是-axios" class="headerlink" title="1.什么是 axios?"></a>1.什么是 axios?</h3><p>Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。</p>
+<h3 id="2-特性"><a href="#2-特性" class="headerlink" title="2.特性"></a>2.特性</h3><ul>
+<li>从浏览器中创建 XMLHttpRequests</li>
+<li>从 node.js 创建 http 请求</li>
+<li>支持 Promise API</li>
+<li>拦截请求和响应</li>
+<li>转换请求数据和响应数据</li>
+<li>取消请求</li>
+<li>自动转换 JSON 数据</li>
+<li>客户端支持防御 XSRF</li>
+</ul>
+<h3 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h3><ul>
+<li>处理并发请求的助手函数</li>
+<li>axios.all(iterable)</li>
+<li>axios.spread(callback)</li>
+</ul>
+<h3 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h3><p>可以使用自定义配置新建一个 axios 实例<br>axios.create([config])</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> instance = axios.create(&#123;</span><br><span class="line">  <span class="attr">baseURL</span>: <span class="string">&#x27;https://some-domain.com/api/&#x27;</span>,</span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">1000</span>,</span><br><span class="line">  <span class="attr">headers</span>: &#123;<span class="string">&#x27;X-Custom-Header&#x27;</span>: <span class="string">&#x27;foobar&#x27;</span>&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><p>以下是可用的实例方法。指定的配置将与实例的配置合并。</p>
+<p>axios#request(config)<br>axios#get(url[, config])<br>axios#delete(url[, config])<br>axios#head(url[, config])<br>axios#options(url[, config])<br>axios#post(url[, data[, config]])<br>axios#put(url[, data[, config]])<br>axios#patch(url[, data[, config]])</p>
+<h3 id="请求配置"><a href="#请求配置" class="headerlink" title="请求配置"></a>请求配置</h3>
   </div>
   <div class="post-footer">
     
