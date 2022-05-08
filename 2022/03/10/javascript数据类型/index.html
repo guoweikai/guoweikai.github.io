@@ -185,8 +185,12 @@
 <blockquote>
 <p>Object.assign()方法接收的第一个参数作为目标对象，后面的所有参数作为源对象。然后把所有的源对象合并到目标对象中。它会修改了一个对象，因此会触发 ES6 setter。<br>扩展操作符（…）使用它时，数组或对象中的每一个值都会被拷贝到一个新的数组或对象中。它不复制继承的属性或类的属性，但是它会复制ES6的 symbols 属性。</p>
 </blockquote>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p> Object.is(-1,1)</p>
-<p>Object.prototype.valueOf()</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
+<li><p>Object.is(-1,1)</p>
+</li>
+<li><p>Object.prototype.valueOf()</p>
+</li>
+</ol>
 <p>valueof()方法返回指定对象的原始值</p>
 <p>语法：<br>object.valueof()</p>
 <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">对象的方法详解</a></p>
