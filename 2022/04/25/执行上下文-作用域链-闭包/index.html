@@ -57,9 +57,13 @@
   <div class="post-content">
     <h3 id="1-对闭包的理解"><a href="#1-对闭包的理解" class="headerlink" title="1. 对闭包的理解"></a>1. 对闭包的理解</h3><p>闭包是指有权访问另一个函数作用域变量的函数. 创建闭包的最常见的方式就是在一个函数内创建另外一个函数,创建的函数可以访问到当前函数的局部变量</p>
 <p>闭包有两个常用的用途</p>
-<blockquote>
-<p>闭包的第一个用途是使我们再函数外部能够访问到函数内部的变量,通过使用闭包,可以通过在外部调用闭包函数,从而在外部访问到函数内部的变量,可以使用这种方法来创建私有变量</p>
-</blockquote>
+<ul>
+<li>闭包的第一个用途是使我们再函数外部能够访问到函数内部的变量,通过使用闭包,可以通过在外部调用闭包函数,从而在外部访问到函数内部的变量,可以使用这种方法来创建私有变量</li>
+<li>闭包的另一个用途是使已经运行结束的函数上下文中的变量对象继续留在内存中，因为闭包函数保留了这个变量对象的引用，所以这个变量对象不会被回收</li>
+</ul>
+<p>比如，函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span>  a =<span class="number">1</span> ;</span><br><span class="line">     <span class="built_in">window</span>.B = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(a)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在 JS 中，闭包存在的意义就是让我们可以间接访问函数内部的变量。经典面试题：循环中使用闭包解决 var 定义函数的问题</p>
 <p>案例(经典面试题)</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <!-- 预期结构  0,1,2,3,4 -->
@@ -82,10 +86,51 @@
 <li>所有未定义直接复制的变量自动声明为全局作用域</li>
 <li>所有 window 对象的属性拥有全局作用域</li>
 <li>全局作用域变量有很大的弊端, 过多的全局作用域变量会污染全局命名空间,容易引起命名冲突<br>(2) 函数作用域</li>
-<li></li>
+<li> 函数作用域声明在函数内部的变零，一般只有固定的代码片段可以访问到</li>
+<li> 作用域是分层的，内层作用域可以访问外层作用域，反之不行<br>2）块级作用域</li>
+<li>使用ES6中新增的let和const指令可以声明块级作用域，块级作用域可以在函数中创建也可以在一个代码块中的创建（由{ }包裹的代码片段）</li>
+<li>let和const声明的变量不会有变量提升，也不可以重复声明</li>
+<li>在循环中比较适合绑定块级作用域，这样就可以把声明的计数器变量限制在循环内部</li>
 </ul>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>js 的事件循环机制</p>
-<p>链接 :</p>
+<p>作用域链:<br>在当前作用域中查找所需变量，但是该作用域没有这个变量，那这个变量就是自由变量。如果在自己作用域找不到该变量就去父级作用域查找，依次向上级作用域查找，直到访问到window对象就被终止，这一层层的关系就是作用域链。</p>
+<p>作用域链的作用是保证对执行环境有权访问的所有变量和函数的有序访问，通过作用域链，可以访问到外层环境的变量和函数。</p>
+<h3 id="3-对执行上下文的理解"><a href="#3-对执行上下文的理解" class="headerlink" title="3. 对执行上下文的理解"></a>3. 对执行上下文的理解</h3><ol>
+<li>执行上下文类型</li>
+</ol>
+<p>（1）全局执行上下文</p>
+<p>任何不在函数内部的都是全局执行上下文，它首先会创建一个全局的window对象，并且设置this的值等于这个全局对象，一个程序中只有一个全局执行上下文。</p>
+<p>(2) 函数执行上下文<br>当一个函数被调用时，就会为该函数创建一个新的执行上下文，函数的上下文可以有任意多个</p>
+<p>（3）eval函数执行上下文</p>
+<p>执行在eval函数中的代码会有属于他自己的执行上下文，不过eval函数不常使用，不做介绍。</p>
+<ol start="3">
+<li>创建执行上下文<br>创建执行上下文有两个阶段：创建阶段和执行阶段<br>1）创建阶段<br>（1）this绑定</li>
+</ol>
+<p>在全局执行上下文中，this指向全局对象（window对象）<br>在函数执行上下文中，this指向取决于函数如何调用。如果它被一个引用对象调用，那么 this 会被设置成那个对象，否则 this 的值被设置为全局对象或者 undefined</p>
+<p>（2）创建词法环境组件</p>
+<p>词法环境是一种有标识符——变量映射的数据结构，标识符是指变量/函数名，变量是对实际对象或原始数据的引用。<br>词法环境的内部有两个组件：加粗样式：环境记录器:用来储存变量个函数声明的实际位置外部环境的引用：可以访问父级作用域</p>
+<p>（3）创建变量环境组件</p>
+<p>变量环境也是一个词法环境，其环境记录器持有变量声明语句在执行上下文中创建的绑定关系。</p>
+<p>2）执行阶段<br>此阶段会完成对变量的分配，最后执行完代码。<br>简单来说执行上下文就是指：<br>在执行一点JS代码之前，需要先解析代码。解析的时候会先创建一个全局执行上下文环境，先把代码中即将执行的变量、函数声明都拿出来，变量先赋值为undefined，函数先声明好可使用。这一步执行完了，才开始正式的执行程序。<br>在一个函数执行之前，也会创建一个函数执行上下文环境，跟全局执行上下文类似，不过函数执行上下文会多出this、arguments和函数的参数。</p>
+<p>全局上下文：变量定义，函数声明<br>函数上下文：变量定义，函数声明，this，arguments</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="js-的事件循环机制"><a href="#js-的事件循环机制" class="headerlink" title="js 的事件循环机制"></a>js 的事件循环机制</h3><h3 id="js-的执行上下文"><a href="#js-的执行上下文" class="headerlink" title="js 的执行上下文"></a>js 的执行上下文</h3><p>执行上下文是指函数调用时在执行栈中产生的当前函数(或全球对象window)的执行环境，该环境如隔绝外部世界的容器边界，保管可访问的变量、this对象等</p>
+<h3 id="作用域-和-执行上下文的区别"><a href="#作用域-和-执行上下文的区别" class="headerlink" title="作用域 和 执行上下文的区别"></a>作用域 和 执行上下文的区别</h3><p>作用域分为全局作用域,函数作用域, 块级作用域</p>
+<h3 id="js-中指针是什么意思"><a href="#js-中指针是什么意思" class="headerlink" title="js 中指针是什么意思?"></a>js 中指针是什么意思?</h3><p>个人理解：指针只是指向内存的一个索引；而地址则是内存中确切的位置</p>
+<p>可以看一下这个<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903551961923591">文章</a></p>
+<h3 id="执行环境-执行上下文"><a href="#执行环境-执行上下文" class="headerlink" title="执行环境(执行上下文)"></a>执行环境(执行上下文)</h3><h3 id="执行上下文栈-和作用域链之间的关系"><a href="#执行上下文栈-和作用域链之间的关系" class="headerlink" title="执行上下文栈 和作用域链之间的关系"></a>执行上下文栈 和作用域链之间的关系</h3><h3 id="原型链和作用域链的区别"><a href="#原型链和作用域链的区别" class="headerlink" title="原型链和作用域链的区别"></a>原型链和作用域链的区别</h3><p> 参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yxh168/articles/10653164.html#:~:text=%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE%20%E5%8E%9F%E5%9E%8B%E4%BD%9C%E7%94%A8%E4%BA%8Ejs%E5%AF%B9%E8%B1%A1%E4%B8%8A,%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%98%AF%E7%94%A8%E4%BA%8Ejs%E7%9A%84%E5%87%BD%E6%95%B0%E4%B8%8A%20%E4%B8%A4%E8%80%85%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9C%BA%E6%99%AF%E4%B8%8D%E5%90%8C%20%E5%8E%9F%E5%9E%8B%E6%98%AF%E7%94%A8%E6%9D%A5%E5%AE%9E%E7%8E%B0js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E7%9A%84">文档 1</a></p>
+<p> 原型作用于js对象上 作用域是用于js的函数上  两者使用的场景不同 原型是用来实现js面向对象编程的</p>
+<p> 定义一个函数后会自动添加几个隐式属性</p>
+<p> [[scope]]属性     存储的是一个映射表     key是索引从0开始   value是自己的AO内存地址和GO内存地址</p>
+<p>每个js对象都包含两个隐式属性 因为在创建每个对象的时候都必须先调用new操作符号 调用new时候会自动添加两个执行操作</p>
+<pre><code>  1.添加__proto__属性和constructor属性
+
+     var this=&#123;  __proto__ :function.prototype,constructor:function&#125;
+
+  2.自动给函数添加返回值this
+
+     return this
+</code></pre>
+<p>   通过__proto__的指向形成了原型链</p>
+<h3 id="还应该包括垃圾回收机制"><a href="#还应该包括垃圾回收机制" class="headerlink" title="还应该包括垃圾回收机制"></a>还应该包括垃圾回收机制</h3><p>链接 :</p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6937469222251560990#heading-4">JS 闭包经典使用场景和含闭包必刷题</a></p>
 
   </div>
