@@ -55,10 +55,11 @@
     <span class="post-time">2022-03-10</span>
   </div>
   <div class="post-content">
-    <h3 id="1-手写-Object-create"><a href="#1-手写-Object-create" class="headerlink" title="1. 手写 Object.create"></a>1. 手写 Object.create</h3><p>   Object.create() 函数传入一个对象, 将此对象作为原型,创建一个新对象</p>
+    <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6946136940164939813">链接地址</a></p>
+<h3 id="1-手写-Object-create-对象的方法的考察"><a href="#1-手写-Object-create-对象的方法的考察" class="headerlink" title="1. 手写 Object.create (对象的方法的考察)"></a>1. 手写 Object.create (对象的方法的考察)</h3><p>   Object.create() 函数传入一个对象, 将此对象作为原型,创建一个新对象</p>
    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.myCreate = <span class="function"><span class="keyword">function</span> (<span class="params">proto</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> fn = <span class="function"><span class="title">funtion</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">  fn.prototype = proto</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> fn()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="手写-instanceof-方法"><a href="#手写-instanceof-方法" class="headerlink" title="手写 instanceof 方法"></a>手写 instanceof 方法</h3><h4 id=""><a href="#" class="headerlink" title=""></a></h4><p>问题: </p>
+<h3 id="2-手写-instanceof-方法-数据类型方法的考察"><a href="#2-手写-instanceof-方法-数据类型方法的考察" class="headerlink" title="2. 手写 instanceof 方法 (数据类型方法的考察)"></a>2. 手写 instanceof 方法 (数据类型方法的考察)</h3><h3 id="3-手写-new-操作符-new-操作符创建对象的考察"><a href="#3-手写-new-操作符-new-操作符创建对象的考察" class="headerlink" title="3. 手写 new 操作符  (new 操作符创建对象的考察)"></a>3. 手写 new 操作符  (new 操作符创建对象的考察)</h3><h3 id="4-手写-Promise-对-promise-构造函数的考察"><a href="#4-手写-Promise-对-promise-构造函数的考察" class="headerlink" title="4. 手写 Promise (对 promise 构造函数的考察)"></a>4. 手写 Promise (对 promise 构造函数的考察)</h3><p>问题: </p>
 <h3 id="Object-有哪些静态方法"><a href="#Object-有哪些静态方法" class="headerlink" title="Object 有哪些静态方法"></a>Object 有哪些静态方法</h3><p>Object.assign(target,…source)<br>把任意多个的源对象可枚举属性拷贝给目标对象,然后返回目标对象</p>
 <p>Object.create()</p>
 <p>Object.keys(obj)</p>
