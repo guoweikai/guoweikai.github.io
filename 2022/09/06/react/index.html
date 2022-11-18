@@ -6,7 +6,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   
-  <title>异步编程 - blog</title>
+  <title>react - blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   
   <meta name="keywords" content=生活,博客,前端,游戏>
@@ -49,18 +49,33 @@
 </header>
 <article class="post">
   <div class="post-title">
-    <h1 class="article-title">异步编程</h1>
+    <h1 class="article-title">react</h1>
   </div>
    <div class="post-meta">
-    <span class="post-time">2022-05-08</span>
+    <span class="post-time">2022-09-06</span>
   </div>
   <div class="post-content">
-    <h3 id="1-异步编程的实现方式"><a href="#1-异步编程的实现方式" class="headerlink" title="1. 异步编程的实现方式"></a>1. 异步编程的实现方式</h3><p>javascript 中的异步机制可以分为以下几种</p>
-<ul>
-<li>回调函数 的方式, 使用回调函数的方式有一个缺点是, 多个回调函数嵌套的时候会造成回调函数地狱,上下两层的回调函数间的代码耦合度太高,不利于代码的可维护.</li>
-<li>Promise 的方式,使用 promise 的方式可以将乔涛的回调函数作为链式调用,但是使用这种方法, 有时会造成多个 then 的链式调用,可能会造成代码的语义不够明确</li>
+    <h3 id="组件为什么可以嵌套另外一个组件"><a href="#组件为什么可以嵌套另外一个组件" class="headerlink" title="组件为什么可以嵌套另外一个组件"></a>组件为什么可以嵌套另外一个组件</h3><p>因为在组件中 有 this.props.children,可以将两个括号的内容传递到内部组件</p>
+<h3 id="组件传递过去的数据类型"><a href="#组件传递过去的数据类型" class="headerlink" title="组件传递过去的数据类型"></a>组件传递过去的数据类型</h3><ul>
+<li><ol>
+<li>jsx 可以是一个组件   </li>
+</ol>
+</li>
+<li><ol start="2">
+<li>函数, 可以在组件内部调用, 传值出来</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>其他正常数据类型</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>className 传递样式进去<br>这些都是因为 有 props</li>
+</ol>
+</li>
 </ul>
-
+<h3 id="React-create-后给到了谁"><a href="#React-create-后给到了谁" class="headerlink" title="React.create 后给到了谁?"></a>React.create 后给到了谁?</h3><h3 id="有状态组件和-无状态组件"><a href="#有状态组件和-无状态组件" class="headerlink" title="有状态组件和 无状态组件"></a>有状态组件和 无状态组件</h3><p>自定义 Button 为什么里边可以写文字</p>
+<h3 id="React-事件机制"><a href="#React-事件机制" class="headerlink" title="React 事件机制"></a>React 事件机制</h3>
   </div>
   <div class="post-footer">
     

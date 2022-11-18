@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>generator - blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=生活,博客,前端,游戏>
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">blog</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">generator</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-08-03</span>
+  </div>
+  <div class="post-content">
+    <h2 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h2><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000013264053">深入理解Generator</a><br>(阮一峰es6)[<a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/generator]">https://es6.ruanyifeng.com/#docs/generator]</a></p>
+<h2 id="为什么要用-generator"><a href="#为什么要用-generator" class="headerlink" title="为什么要用 generator"></a>为什么要用 generator</h2><p>在前端开发过程中我们经常需要先请求后端的数据, 再用拿来的数据进行使用网页页面渲染等操作,然而请求数据是一个异步操作, 而我们的页面渲染又是同步操作, 这里 es6 中 的 generator 就能发挥它的作用,使用它可以像写同步代码一样写异步代码.下面是一个例子, 先忽略下面的写法,后面会详细说明,如果你已经理解 generator 基础可以直接跳过这部分和语法部分,直接深入理解的部分</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>generator 函数是</p>
+<p>generator语法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="keyword">yield</span> <span class="number">1</span> + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="keyword">yield</span> <span class="number">2</span> + a;</span><br><span class="line">  <span class="built_in">console</span>.log(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> it = foo();</span><br><span class="line">it.next();</span><br><span class="line">it.next(<span class="number">2</span>);</span><br><span class="line">it.next(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="深入理解"><a href="#深入理解" class="headerlink" title="深入理解"></a>深入理解</h2><p>前两部分我们学习了为什么要用 generator 以及 generator 的语法, 这些都是基础, 下面我们来看点不一样的东西, 老规矩先带这问题才能更有目的性的看,这里先提出几个问题</p>
+<ul>
+<li>怎么在异步代码中使用, 上面的例子都是同步的</li>
+<li>如果出现错误要怎么进行错误处理</li>
+<li>一个个调用 next 太麻烦了, 能不能循环执行或者自动执行</li>
+</ul>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>进行下面所有的部分之前我们先说一说迭代器, 看到现在,我们都知道 generator 函数执行完返回的是一个迭代器. 在 es6 中同样提供了一种新的迭代方式 for…of, for…of 可以帮忙我们直接迭代出每个的值, 在数组中它像这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span>  i <span class="keyword">of</span> [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>])&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line"><span class="comment">//a</span></span><br><span class="line"><span class="comment">//b</span></span><br><span class="line"><span class="comment">//c</span></span><br></pre></td></tr></table></figure>
+
+
+  </div>
+  <div class="post-footer">
+    
+
+    <a href="#top" class="top">Back to Top</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    weikai
+  </span>
+</footer>
+    </div>
+  </body>
+</html>
