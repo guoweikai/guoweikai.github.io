@@ -172,10 +172,38 @@
 <ol start="3">
 <li>history 的 API</li>
 </ol>
-<p>|  —-  | —-  |<br>|API     |    定义   |<br>|history.pushState(data,title [, url]) |  pushState 主要用于往历史记录堆栈顶部添加一条记录, 各参数解析如下: 1. data 会在 onpopstate 事件触发时作为参数传递过去; 2 title 为页面标题, 当前所有浏览器都会忽略此参数; 3 url 为页面地址, 可选, 缺少时表示为当前页地址|<br>|history.replaceState(data,title[,url])|更改当前的历史记录,参数同上; 上面的 pushstate 是添加, 这个更改|<br>|histroy.state| 用于存储以上方法的 data 数据, 不同浏览器的读写权限不一样|<br>|window.onpopstate| 响应 pushstate 或者 replaceState的调用 |</p>
-<ol start="4">
-<li>history 的特点</li>
-</ol>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>history.pushState(data,title [, url])</td>
+<td>pushState 主要用于往历史记录堆栈顶部添加一条记录, 各参数解析如下: 1. data 会在 onpopstate 事件触发时作为参数传递过去; 2 title 为页面标题, 当前所有浏览器都会忽略此参数; 3 url 为页面地址, 可选, 缺少时表示为当前页地址</td>
+</tr>
+<tr>
+<td>history.replaceState(data,title[,url])</td>
+<td>更改当前的历史记录,参数同上; 上面的 pushstate 是添加, 这个更改</td>
+</tr>
+<tr>
+<td>histroy.state</td>
+<td>用于存储以上方法的 data 数据, 不同浏览器的读写权限不一样</td>
+</tr>
+<tr>
+<td>window.onpopstate</td>
+<td>响应 pushstate 或者 replaceState的调用</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4. history 的特点</td>
+<td></td>
+</tr>
+</tbody></table>
 <p>对于 history 来说, 主要有以下特点</p>
 <ul>
 <li>新的 url 可以是与当前 url 同源的任意 url, 也可以是与当前 url 一样的地址, 但是这样会导致的一个问题是, 会吧重新的这一次操作记录到栈当中</li>
@@ -236,9 +264,7 @@
 <h1 id="路由元信息"><a href="#路由元信息" class="headerlink" title="路由元信息"></a>路由元信息</h1><p>什么是路由元信息?<br>vue-router 路由元信息说白了就是通过 </p>
 <p>使用的场景有哪些?</p>
 <h3 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h3><p>当打包构建应用时, js 包会变得非常大,影响页面加载. 如果我们能把不同路由对应的组件分割成不同的代码块,然后当路由被访问的时候才加载对应组件, 这样就更加高效了</p>
-<p>api 解析:</p>
-<p>router-link props</p>
-<ul>
+<h1 id="api-解析"><a href="#api-解析" class="headerlink" title="api 解析:"></a>api 解析:</h1><h2 id="router-link-props"><a href="#router-link-props" class="headerlink" title="router-link props"></a>router-link props</h2><ul>
 <li>to</li>
 </ul>
 <p>表示目标路由的连接, 当被点击后, 内部会立刻把 to 的值传到 router.push(), 所以这个值可以是一个 string 或者是描述目标位置的对象</p>
@@ -248,16 +274,14 @@
 <ul>
 <li>active-class<br> 链接激活时, 应用与渲染的 <a> 的 class</li>
 </ul>
-<p>router-view props</p>
-<p> 如果 <router-view> 设置了名称, 则会渲染对应的路由配置中. components 下的相应组件</p>
+<h2 id="router-view-props"><a href="#router-view-props" class="headerlink" title="router-view props"></a>router-view props</h2><p> 如果 <router-view> 设置了名称, 则会渲染对应的路由配置中. components 下的相应组件</p>
 <p> Router 构建选项</p>
 <p> mode: </p>
 <p>配置路由模式:</p>
 <ul>
 <li>hash:使用 URL hash 值来作为路由,支持所有浏览器,包括不支持 HTML 5 History Api 的浏览器</li>
 </ul>
-<p>Router 实例属性</p>
-
+<h2 id="Router-实例属性"><a href="#Router-实例属性" class="headerlink" title="Router 实例属性"></a>Router 实例属性</h2>
   </div>
   <div class="post-footer">
     
