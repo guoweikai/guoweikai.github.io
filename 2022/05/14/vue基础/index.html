@@ -59,9 +59,7 @@
 <p>Vue 是一套用于构建用户界面的渐进式框架,与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
 <p><strong>声明式渲染</strong></p>
 <h2 id="Vue-实例"><a href="#Vue-实例" class="headerlink" title="Vue 实例"></a>Vue 实例</h2><p><strong>创建一个实例</strong></p>
-<p>  每一个 Vue 应用都是通过用 Vue 函数创建一个新的 Vue 实例开始的:</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line"><span class="comment">// 选项</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
+<p>  每一个 Vue 应用都是通过用 Vue 函数创建一个新的 Vue 实例开始的:<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line"><span class="comment">// 选项</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p><strong>数据与方法</strong></p>
 <p>  当一个 Vue 实例被创建时, 它将 data 对象中的所有 property 加入到 Vue 的响应式系统中. 当这些 property 的值发生改变时, 视图将会发生响应, 即匹配更新为新的值</p>
 <p><strong>实例生命周期钩子</strong></p>
@@ -237,11 +235,9 @@
 </ul>
 </li>
 <li><p>替换数组<br>变更方法, 顾名思义, 会变更调用了这些方法的原始数组.相比之下, 也有非变更方法, 例如 filter() , concat() 和 slice(). 它们不会变更原始数组, 而总是返回一个新数组,当使用非变更方法时,可以用新数组替换旧数组:</p>
-</li>
-</ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">example1.items = example1.items.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.message.match(<span class="regexp">/Foo/</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>你可能认为这将导致 Vue 丢弃现有 DOM 并重新渲染整个列表,幸运的是, 事实并非如此, Vue 为了使得 DOM 元素得到更大范围的重用而实现了一些智能的启发式方法,所以用一个含有相同元素的数组去替换原来的数组是非常高效地操作</p>
-<ul>
+</li>
 <li><p>注意事项</p>
 <p>  显示过滤/排序后的结果</p>
 <p>  有时, 我们想要显示一个数组经过过滤或排序后的版本, 而不实际变更或重置原始数据. 在这种情况下, 可以创建一个计算属性, 来返回过滤或排序后的数组</p>
