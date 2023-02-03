@@ -55,7 +55,10 @@
     <span class="post-time">2022-05-14</span>
   </div>
   <div class="post-content">
-    <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>   <strong>Vue.js 是什么?</strong><br>    Vue 是一套用于构建用户界面的渐进式框架,与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。<br>   **声明式渲染</p>
+    <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>   <strong>Vue.js 是什么?</strong></p>
+<pre><code>Vue 是一套用于构建用户界面的渐进式框架,与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+</code></pre>
+<p>   <strong>声明式渲染</strong></p>
 <h2 id="Vue-实例"><a href="#Vue-实例" class="headerlink" title="Vue 实例"></a>Vue 实例</h2><p><strong>创建一个实例</strong><br>  每一个 Vue 应用都是通过用 Vue 函数创建一个新的 Vue 实例开始的:<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="comment">// 选项</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p><strong>数据与方法</strong></p>
 <p>当一个 Vue 实例被创建时, 它将 data 对象中的所有 property 加入到 Vue 的响应式系统中. 当这些 property 的值发生改变时, 视图将会发生响应, 即匹配更新为新的值</p>
@@ -779,7 +782,7 @@
 
 
 <p><strong>约束</strong></p>
-<h2 id="内在"><a href="#内在" class="headerlink" title="内在"></a>内在</h2><p><strong>深入响应式原理</strong></p>
+<h2 id="内在-考点之一"><a href="#内在-考点之一" class="headerlink" title="内在  考点之一:"></a>内在  考点之一:</h2><p><strong>深入响应式原理</strong></p>
 <p>Vue 最独特的特性之一, 是其非侵入性的响应式系统,数据模型仅仅是普通的 js 对象. 而当你修改它们时, 视图会进行更新, 这使得状态管理非常简单直接, 不过理解其工作原理同样重要,这样可以跪地一些常见的问题.</p>
 <ol>
 <li>如何追踪变化</li>
@@ -796,7 +799,24 @@
 <li>数据更新调用 setter 方法, 进而通知 watcher 形成关联关系</li>
 </ol>
 </blockquote>
-<p>其实在 Vue 中 初始化渲染</p>
+<ol start="2">
+<li>检测变化的注意事项:<br>由于 js 的限制, Vue 不能检测数组和对象的变化,Vue 不能检测数组和对象的变化,尽管如何我们还是有一些办法来回避这些限制并保证它们的响应性</li>
+</ol>
+<ul>
+<li>对于对象<br>Vue 无法检测 property 的添加或移除. 由于 Vue 会在初始化实例时对 property 执行 getter/setter 转化, 所以 property 必须在 data 对象上存在才能让 Vue 将它转化为响应式. 例如<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="attr">data</span>:&#123;</span><br><span class="line">    <span class="attr">a</span>:<span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// `vm.a` 是响应式的</span></span><br><span class="line"></span><br><span class="line">vm.b = <span class="number">2</span></span><br><span class="line"><span class="comment">// `vm.b` 是非响应式的</span></span><br></pre></td></tr></table></figure>
+对于已经创建的实例, Vue 不允许动态添加根级别的响应式 property. 但是,可以使用 Vue.set(vm.someObject,propertyName,value) 方法向嵌套对象添加响应式 property. 例如, 对于</li>
+</ul>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.set(vm.someObject, <span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>  有时你可能需要为已有对象赋值多个新 property. 比如使用 Object.assign()或 _extend(). 但是, 这样添加到对象上的新 property 不会触发更新. 在这种情况下, 你应该用原对象与要混合进去的对象的 property 一起创建一个新的对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代替 `Object.assign(this.someObject, &#123; a: 1, b: 2 &#125;)`</span></span><br><span class="line"><span class="built_in">this</span>.someObject = <span class="built_in">Object</span>.assign(&#123;&#125;, <span class="built_in">this</span>.someObject, &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对于数组<br> Vue 不能检测以下数组的变动:<ol>
+<li>当你利用索引直接设置一个数组项时, 例如: vm.items[indexOfItem] = vlaue</li>
+<li>当你修改数组的长度时. 例如: vm.items.length = newLength<br>举个例子</li>
+</ol>
+</li>
+</ul>
 <p><strong>异步更新队列</strong><br>Vue 在更新 DOM 时是异步执行的. 只要侦听到数据变化, Vue 将开启一个队列, 并缓存在同一事件循环中发生的所有数据变更. 如果同一个 watcher 被多次触发, 只会被推入到队列中移除, 这种在缓冲时去除重复数据对于避免不必要的技术和 DOM 操作是非常重要的. 然后, 在下一个的事件循环”tick”中,Vue 刷新队列并执行实际(已去重的)工作. vue 在内部对异步队列尝试使用原来的 Promise.then, MutationObserver 和 setIMmediate, 如果执行环境不支持,则会采用 setTimeout(fn,0)代替.<br>例如: 当你设置 vm.someData = “new Value” 该组件不会立即重新渲染, 当刷新列表时, 组件会在下一个事件循环’tick’中更新. 多数情况我们不需要关心这个过程, 但是如果你想基于更新后的 DOM 状态来做点什么,这就可能会有些棘手. 虽然 Vue.js 通常鼓励开发人员使用”数据驱动” 的方式思考, 避免直接接触 DOM, 但是有时候我们必须要这么做, 为了在数据变化之后等待 Vue 完成更新 DOM,可以在数据变化之后立即使用 Vue.nextTick(callback). 这样回调函数将在 DOM 更新完成后被调用. 例如</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;example&quot;</span>&gt;&#123;&#123;message&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
