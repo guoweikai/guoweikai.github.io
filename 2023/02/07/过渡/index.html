@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>过渡 - 文档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=生活,博客,前端,游戏>
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="文档" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">文档</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">过渡</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2023-02-07</span>
+  </div>
+  <div class="post-content">
+    <p>过渡:</p>
+<p>通过过渡可以指定一个属性发生变化的切换方式.<br>通过过度可以创建一些非常好的效果,提升用户的体验</p>
+<p>属性值:</p>
+<p>transition-property: 指定要执行过度的属性</p>
+<blockquote>
+<p>多个属性间使用 , 隔开<br>如果所有属性都需要过渡, 则使用 all 关键字<br>大部分属性都支持过渡效果<br>注意过度时必须是从一个有效数值向另外一个有效数组进行过渡</p>
+</blockquote>
+<p>transition-duration: 指定过渡效果的持续时间</p>
+<blockquote>
+<p>时间单位: s 和 ms (1s = 1000ms)</p>
+</blockquote>
+<p>transition-delay：过渡效果的延迟，等待一段时间后在执行过渡<br>transition-timing-function：过渡的时序函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">linear匀速运动</span><br><span class="line">ease 默认值，慢速开始，先加速后减速</span><br><span class="line">ease-<span class="keyword">in</span> 加速运动</span><br><span class="line">ease-out 减速运动</span><br><span class="line">ease-<span class="keyword">in</span>-out 先加速后减速</span><br><span class="line">cubic-bezier()来指定时序函数 https:<span class="comment">//cubic-bezier.com</span></span><br><span class="line">steps()分步执行过渡效果，可以设置第二个值：</span><br><span class="line">end，在时间结束时执行过渡（默认值）</span><br><span class="line">start，在时间开始时执行过渡</span><br></pre></td></tr></table></figure>
+<p>transition：可以同时设置过渡相关的所有属性<br>只有一个要求，如果要写延迟，则两个时间中第一个是持续时间，第二个是延迟时间</p>
+<p>动画</p>
+<p>动画和过渡类似,都是可以实现一些动态的效果, 不同的是<br>过渡需要在某个属性发生变化时触发<br>动画可以自动触发动态效果<br>设置动画效果,必须先要设置一个关键帧, 关键帧设置了动画执行每一个步骤<br>animation-name 指定动画的关键帧名称<br>animation-duration：指定动画效果的持续时间<br>animation-delay：动画效果的延迟，等待一段时间后在执行动画<br>animation-timing-function：动画的时序函数<br>animation-iteration-count 动画执行的次数<br>infinite 无限执行<br>animation-direction 指定动画运行的方向<br>normal 从from向to运行，每次都是这样，默认值<br>reverse 从to向from运行，每次都是这样<br>alternate 从from向to运行，重复执行动画时反向执行<br>alternate-reverse 从to向from运行，重复执行动画时反向执行<br>animation-play-state 设置动画的执行状态<br>running 动画执行，默认值<br>paused 动画暂停</p>
+<p>animation-fill-mode 动画的填充模式</p>
+<p>none 动画执行完毕，元素回到原来位置，默认值<br>forwards 动画执行完毕，元素会停止在动画结束的位置<br>backwards 动画延时等待时，元素就会处于开始位置<br>both 结合了forwards和backwards</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">/* animation-name: test;</span></span><br><span class="line"><span class="comment">animation-duration: 2s;</span></span><br><span class="line"><span class="comment">animation-delay: 2s;</span></span><br><span class="line"><span class="comment">animation-timing-function: linear;</span></span><br><span class="line"><span class="comment">animation-iteration-count: infinite;</span></span><br><span class="line"><span class="comment">animation-direction: alternate;</span></span><br><span class="line"><span class="comment">animation-fill-mode: both; */</span></span><br><span class="line"></span><br><span class="line"><span class="attr">animation</span>: test 2s 2s linear infinite alternate both;</span><br></pre></td></tr></table></figure>
+
+
+
+
+  </div>
+  <div class="post-footer">
+    
+
+    <a href="#top" class="top">Back to Top</a>
+  </div>
+</article>
+<footer>
+  &copy; 2023
+  <span class="author">
+    weikai
+  </span>
+</footer>
+    </div>
+  </body>
+</html>
