@@ -57,8 +57,17 @@
   <div class="post-content">
     <p>主要参考 阮一峰 es6 模块相关</p>
 <ol>
-<li></li>
+<li> 概述</li>
 </ol>
+<p>历史上，JavaScript 一直没有模块（module）体系，无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。其他语言都有这项功能，比如 Ruby 的require、Python 的import，甚至就连 CSS 都有@import，但是 JavaScript 任何这方面的支持都没有，这对开发大型的、复杂的项目形成了巨大障碍。<br>在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD 两种。前者用于服务器，后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。<br>ES6 模块的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找对象属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;stat,exists,readfile&#125; = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> _fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> stat = _fs.stat;</span><br><span class="line"><span class="keyword">let</span> exists = _fs.exists;</span><br><span class="line"><span class="keyword">let</span> readfile = _fs.readfile;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 
   </div>
   <div class="post-footer">
