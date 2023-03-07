@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>webpack - 文档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=生活,博客,前端,游戏>
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="文档" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">文档</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">webpack</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2023-03-07</span>
+  </div>
+  <div class="post-content">
+    <ol>
+<li><h3 id="你知道-webpack-的作用是什么吗"><a href="#你知道-webpack-的作用是什么吗" class="headerlink" title="你知道 webpack 的作用是什么吗?"></a>你知道 webpack 的作用是什么吗?</h3></li>
+</ol>
+<p>从官网上的描述我们其实不难理解,webapck 的作用其实可以有以下几点</p>
+<ul>
+<li>模块打包. 可以将不同模块的文件打包整合在疫情,并且保证它们之间的引用正确,执行有序,利用打包我们就可以在开发的时候根据我们自己的业务自由划分文件模块,保证项目结构的清晰和可读性</li>
+<li>编译兼容. 在前端的上古时期,手写一堆浏览器兼容代码一直是令前端工程师头皮发麻的事情,而在今天这个问题被大大的弱化了,通过 webpack 的 loader 机制</li>
+<li>能力扩展 通过webpack的Plugin机制，我们在实现模块化打包和编译兼容的基础上，可以进一步实现诸如按需加载，代码压缩等一系列功能，帮助我们进一步提高自动化程度，工程效率以及打包输出的质量。</li>
+</ul>
+<ol start="2">
+<li><h3 id="Webpack-构建流程简单说一下"><a href="#Webpack-构建流程简单说一下" class="headerlink" title="Webpack 构建流程简单说一下"></a>Webpack 构建流程简单说一下</h3></li>
+</ol>
+<ul>
+<li>初始化参数: 从配置文件和 shell 语句中读取与合并参数,得出最终的参数</li>
+<li>开始编译: 用上一步得到的参数初始化 Compiler 对象, 加载所有配置的插件,执行对象的 run 方法开始执行编译</li>
+<li>确定入口: 根据配置中的 entry 找出所有的入口文件</li>
+<li>编译模块: 从入口文件出发,调用所有配置的 loader 对模块进行翻译, 再找出该模块依赖的模块, 再递归本步骤知道所有入口依赖的文件都经过了本步骤的处理</li>
+<li>完成模块编译：在经过第4步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系</li>
+<li>输出资源: 根据入口和模块之间的依赖关系, 组装成一个个包含多个模块chunk, 再把每个 chunk 转换成一个单独的文件加入到输出列表, 这步是可以修改输出内容的最后机会</li>
+<li>输出完成: 在确定好输出内容后, 根据配置确定输出的路径和文件名, 把文件内容写入到文件系统</li>
+</ul>
+<p>在以上过程中，Webpack 会在特定的时间点广播出特定的事件，插件在监听到感兴趣的事件后会执行特定的逻辑，并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。</p>
+<ol start="3">
+<li><h3 id="说一下模块打包运行原理"><a href="#说一下模块打包运行原理" class="headerlink" title="说一下模块打包运行原理"></a>说一下模块打包运行原理</h3></li>
+</ol>
+<p>如果面试官问你 Webpack 是如何把这些模块合并到一起, 并且保证其正常工作的, 你是否了解呢?</p>
+<ul>
+<li>读取 webpack 的配置参数</li>
+<li>启动webpack，创建Compiler对象并开始解析项目；</li>
+<li>从入口文件（entry）开始解析，并且找到其导入的依赖模块，递归遍历分析，形成依赖关系树；</li>
+</ul>
+<h3 id="是否写过-Loader-简单描述一下编写-loader-的思路"><a href="#是否写过-Loader-简单描述一下编写-loader-的思路" class="headerlink" title="是否写过 Loader? 简单描述一下编写 loader 的思路"></a>是否写过 Loader? 简单描述一下编写 loader 的思路</h3><p>如果面试官问你Webpack是如何把这些模块合并到一起，并且保证其正常工作的，你是否了解呢？</p>
+<h3 id="是否写过Plugin？简单描述一下编写plugin的思路？"><a href="#是否写过Plugin？简单描述一下编写plugin的思路？" class="headerlink" title="是否写过Plugin？简单描述一下编写plugin的思路？"></a>是否写过Plugin？简单描述一下编写plugin的思路？</h3><p>如果说 Loader 负责文件转换,那么 Plugin 便是负责功能扩展, Loader 和 Plugin 作为 Webpack 的两个重要<br>webpack中的 钩子添加的位置</p>
+
+  </div>
+  <div class="post-footer">
+    
+
+    <a href="#top" class="top">Back to Top</a>
+  </div>
+</article>
+<footer>
+  &copy; 2023
+  <span class="author">
+    weikai
+  </span>
+</footer>
+    </div>
+  </body>
+</html>
