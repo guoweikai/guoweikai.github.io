@@ -1064,9 +1064,11 @@ provide 选项允许我们指定我们想要提供给后代组件的数据/方�
 <h2 id="6-vue-2-和-vue-3-的区别-为什么使用-vue3"><a href="#6-vue-2-和-vue-3-的区别-为什么使用-vue3" class="headerlink" title="6 vue 2 和 vue 3 的区别 ,为什么使用 vue3"></a>6 vue 2 和 vue 3 的区别 ,为什么使用 vue3</h2><h4 id="1-Vue-3-0-也要看一下"><a href="#1-Vue-3-0-也要看一下" class="headerlink" title="1. Vue 3.0 也要看一下"></a>1. Vue 3.0 也要看一下</h4><h4 id="2-Vue-组件是-Vue-的实例吗"><a href="#2-Vue-组件是-Vue-的实例吗" class="headerlink" title="2. Vue 组件是 Vue 的实例吗"></a>2. Vue 组件是 Vue 的实例吗</h4><h4 id="3-Vue-包含哪些东西"><a href="#3-Vue-包含哪些东西" class="headerlink" title="3 . Vue 包含哪些东西"></a>3 . Vue 包含哪些东西</h4><p>Vue-cli, vuex ,vuerouter(已经基本掌握) , axios , vue   全家桶 ,npm </p>
 <h4 id="Vue-组件如何拆分"><a href="#Vue-组件如何拆分" class="headerlink" title="Vue 组件如何拆分"></a>Vue 组件如何拆分</h4><h3 id="Vue是如何单向数据流的"><a href="#Vue是如何单向数据流的" class="headerlink" title="Vue是如何单向数据流的"></a>Vue是如何单向数据流的</h3><p>每个子组件都是一个单独的单个, 组件的树形网络关系, 是解析时确定的  比如 parent ,children </p>
 <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ol>
-<li><p>谈谈你对 Vue 响应式数据的理解(深入数据响应原来)</p>
+<li><p>谈谈你对 Vue 响应式数据的理解(深入数据响应原理)?</p>
 </li>
-<li><p>Vue 中如何检测数组的变化 或者 Vue 如何检测对象的变化</p>
+<li><p>谈谈你对 Vue 的双向数据绑定?</p>
+</li>
+<li><p>Vue 中如何检测数组的变化 或者 Vue 如何检测对象的变化 ?</p>
 <ol>
 <li>当你利用索引直接设置一个数组项时, 例如:<br>vm.items[indexOfItem] = newValue</li>
 <li>当你修改数组的长度时, 例如: vm.items.length = newLength</li>
@@ -1098,7 +1100,7 @@ provide 选项允许我们指定我们想要提供给后代组件的数据/方�
 </li>
 <li><p>对应两个钩子函数 activated 和 deactivated, 当组件被激活时, 触发钩子函数 activeted,当组件被移除时, 触发钩子函数 deactived</p>
 </li>
-<li><p> 组件中 data 为什么是一个函数</p>
+<li><p>  组件中 data 为什么是一个函数</p>
 </li>
 <li><p>vue 中组件是用来复用的, 为了进行 data 复用, 将其定义为函数</p>
 </li>
@@ -1111,8 +1113,8 @@ provide 选项允许我们指定我们想要提供给后代组件的数据/方�
 </ol>
 <pre><code>```
 </code></pre>
-<ol start="11">
-<li><p> computed和watch的区别是什么？</p>
+<ol start="9">
+<li><p>  computed和watch的区别是什么？</p>
 </li>
 <li><p>computed 和 watch都是基于 watcher 来实现的</p>
 </li>
@@ -1167,11 +1169,11 @@ provide 选项允许我们指定我们想要提供给后代组件的数据/方�
 </li>
 <li><em>v-for 不建议使用 index 作为 key</em>*</li>
 </ul>
-<ol start="18">
-<li> 谈谈对组件的理解    * 组件化开发能大幅提高应用开发效率、测试性、复用性    * 常用的组件化技术：属性、自定义事件、插槽    * 降低更新范围，值重新渲染变化的组件    * 高内聚、低耦合、单向数据流</li>
+<ol>
+<li>  谈谈对组件的理解    * 组件化开发能大幅提高应用开发效率、测试性、复用性    * 常用的组件化技术：属性、自定义事件、插槽    * 降低更新范围，值重新渲染变化的组件    * 高内聚、低耦合、单向数据流</li>
 <li>请描述组件的渲染流程</li>
-<li>虚拟 DOM 实现原理<br>虚拟 DOM 的实现原理主要包括以下 3 部分    * 用 js 对象模拟真实 DOM 树, 对真实 DOM 进行抽象    * diff 算法 - 比较两颗虚拟 DOM 数的差异    * path 算法 - 将两个虚拟 DOM 对象的差异应用到真正的 DOM 树.</li>
-<li>虚拟 DOM 的优缺点<br>优点:     * 保证性能下限    * 无需手动操作DOM<br>缺点:<br>无法进行极致优化</li>
+<li>虚拟 DOM 实现原理<br> 虚拟 DOM 的实现原理主要包括以下 3 部分    * 用 js 对象模拟真实 DOM 树, 对真实 DOM 进行抽象    * diff 算法 - 比较两颗虚拟 DOM 数的差异    * path 算法 - 将两个虚拟 DOM 对象的差异应用到真正的 DOM 树.</li>
+<li>虚拟 DOM 的优缺点<br>优点:     * 保证性能下限    * 无需手动操作DOM<br>缺点:<br> 无法进行极致优化</li>
 </ol>
 <p>  链接<br>  <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903918753808398#heading-8">ms1</a>  </p>
 <p>22 Vue 组件间通信有哪几种方式<br>  Vue 组件通信主要包括以下 3 类通信: 父子组件通信, 隔代组件通信, 兄弟组件通信<br>  (1) props /$emit 适用父子组件通信<br>  这种方法是 Vue 组件的基础<br>  (2) ref 与 $parent/ $children 使用父子组件通信<br>    * ref:如果在普通的 DOM 元素上使用,引用指向的就是 DOM 元素; 如果用在子组件上, 引用就指向组件实例<br>    * $parent/ $children: 访问 父/子实例<br>  (3) EventBus($emit /$on)<br>    这种方法通过一个空的 Vue 实例作为中央事件总线(事件中心), 用它来触发事件和监听事件, 从而实现任何组件间的通信, 包括父子,隔代, 兄弟组件<br>  (4) Vuex 使用于父子, 隔代,兄弟组件通信<br>    vuex 是一个专为 Vue.js 应用程序开发的状态管理模式, 每一个 Vuex 应用的核心就是 store(仓库).store 基于上就是一个容器, 它包含着你的应用中大部分的状态(state)</p>
