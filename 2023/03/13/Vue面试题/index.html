@@ -56,7 +56,7 @@
   </div>
   <div class="post-content">
     <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ol>
-<li><p>谈谈你对 Vue 响应式数据的理解(深入数据响应原理)?</p>
+<li><p>谈谈你对 Vue 响应式数据的理解(深入数据响应原理)?<br>Vue.js 是采用数据劫持结合发布者-订阅者模式的方式</p>
 </li>
 <li><p>谈谈你对 Vue 的双向数据绑定?</p>
 </li>
@@ -65,7 +65,7 @@
 <li>当你利用索引直接设置一个数组项时, 例如:<br>vm.items[indexOfItem] = newValue</li>
 <li>当你修改数组的长度时, 例如: vm.items.length = newLength</li>
 </ol>
-<p> <strong>Vue 中 数组的索引和长度变化时无法被监控的</strong><br>通过重写了数组的 7 个方法,分别是</p>
+<p> <strong>Vue 中 数组的索引和长度变化时无法被监控的</strong><br> 通过重写了数组的 7 个方法,分别是</p>
 </li>
 <li><p>vue 中如何进行依赖收集<br>Vue 初始化的时候, 挂载之前进行模版编译. 生成 renderFunction.<br>当取值的时候, 就会搜子 watcher, 放到 dep 里面<br>当用户更改值的时候, 就会通知 watcher, 取更新视图</p>
 </li>
@@ -78,11 +78,12 @@
 <li><p>vue.mixin的使用场景和原理?<br> Vue的mixin的作用就是抽离公共的业务逻辑，原理类似对象的继承，当组件初始化的时候，会调用mergeOptions方法进行合并，采用策略模式针对不同的属性进行合并。<br> 如果混入的数据和本身组件的数据有冲突，采用本身的数据为准。<br> 缺点：命名冲突、数据来源不清晰</p>
 </li>
 <li><p>请说明 nextTick 的原理</p>
-<ol>
-<li>nextTick 中的回调是在下次 Dom 更新循环结束之后执行的延迟回调</li>
-<li>可以用于获取更新后的Dom</li>
-<li>Vue中的数据更新是异步的，使用nextTick可以保证用户定义的逻辑在更新之后执行</li>
-</ol>
+</li>
+<li><p>nextTick 中的回调是在下次 Dom 更新循环结束之后执行的延迟回调</p>
+</li>
+<li><p>可以用于获取更新后的Dom</p>
+</li>
+<li><p>Vue中的数据更新是异步的，使用nextTick可以保证用户定义的逻辑在更新之后执行</p>
 </li>
 <li><p>谈谈你对 keep-alive 的了解<br>keep-alive 是 Vue 内置的组件, 可以使被包含的组件保留状态, 避免重新渲染, 其有一下特性:</p>
 </li>
@@ -105,7 +106,7 @@
 </ol>
 <pre><code>```
 </code></pre>
-<ol start="9">
+<ol start="12">
 <li><p>  computed和watch的区别是什么？</p>
 </li>
 <li><p>computed 和 watch都是基于 watcher 来实现的</p>
@@ -162,18 +163,32 @@
 <li><em>v-for 不建议使用 index 作为 key</em>*</li>
 </ul>
 <ol>
-<li>  谈谈对组件的理解    * 组件化开发能大幅提高应用开发效率、测试性、复用性    * 常用的组件化技术：属性、自定义事件、插槽    * 降低更新范围，值重新渲染变化的组件    * 高内聚、低耦合、单向数据流</li>
+<li>   谈谈对组件的理解    * 组件化开发能大幅提高应用开发效率、测试性、复用性    * 常用的组件化技术：属性、自定义事件、插槽    * 降低更新范围，值重新渲染变化的组件    * 高内聚、低耦合、单向数据流</li>
 <li>请描述组件的渲染流程</li>
 <li>虚拟 DOM 实现原理<br> 虚拟 DOM 的实现原理主要包括以下 3 部分    * 用 js 对象模拟真实 DOM 树, 对真实 DOM 进行抽象    * diff 算法 - 比较两颗虚拟 DOM 数的差异    * path 算法 - 将两个虚拟 DOM 对象的差异应用到真正的 DOM 树.</li>
 <li>虚拟 DOM 的优缺点<br>优点:     * 保证性能下限    * 无需手动操作DOM<br>缺点:<br> 无法进行极致优化</li>
 </ol>
 <p>  链接<br>  <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903918753808398#heading-8">ms1</a>  </p>
-<p>22 Vue 组件间通信有哪几种方式<br>  Vue 组件通信主要包括以下 3 类通信: 父子组件通信, 隔代组件通信, 兄弟组件通信<br>  (1) props /$emit 适用父子组件通信<br>  这种方法是 Vue 组件的基础<br>  (2) ref 与 $parent/ $children 使用父子组件通信<br>    * ref:如果在普通的 DOM 元素上使用,引用指向的就是 DOM 元素; 如果用在子组件上, 引用就指向组件实例<br>    * $parent/ $children: 访问 父/子实例<br>  (3) EventBus($emit /$on)<br>    这种方法通过一个空的 Vue 实例作为中央事件总线(事件中心), 用它来触发事件和监听事件, 从而实现任何组件间的通信, 包括父子,隔代, 兄弟组件<br>  (4) Vuex 使用于父子, 隔代,兄弟组件通信<br>    vuex 是一个专为 Vue.js 应用程序开发的状态管理模式, 每一个 Vuex 应用的核心就是 store(仓库).store 基于上就是一个容器, 它包含着你的应用中大部分的状态(state)</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><strong>vue 中 render 函数做了什么?</strong></p>
-<h3 id="1-如何在-非-vue-实例中使用-vuex-或者-router"><a href="#1-如何在-非-vue-实例中使用-vuex-或者-router" class="headerlink" title="1. 如何在 非 vue 实例中使用 vuex 或者 router"></a>1. 如何在 非 vue 实例中使用 vuex 或者 router</h3><p>直接在使用的地方引用就可以的</p>
-<h3 id="2-Vue-的基本原理"><a href="#2-Vue-的基本原理" class="headerlink" title="2. Vue 的基本原理"></a>2. Vue 的基本原理</h3><p>当一个 Vue 实例创建时, Vue 会遍历 data 的属性, 用 Object.defineProperty 将它们转换为 getter/setter, 并且在内部追踪相关依赖</p>
-<h3 id="3-vue-中的双向数据绑定是什么意思-单向数据绑定呢"><a href="#3-vue-中的双向数据绑定是什么意思-单向数据绑定呢" class="headerlink" title="3. vue 中的双向数据绑定是什么意思? 单向数据绑定呢"></a>3. vue 中的双向数据绑定是什么意思? 单向数据绑定呢</h3><h3 id="4-vue-中双向数据绑定的原理"><a href="#4-vue-中双向数据绑定的原理" class="headerlink" title="4. vue 中双向数据绑定的原理"></a>4. vue 中双向数据绑定的原理</h3><p>Vue.js 是采用数据劫持结合发布者-订阅者模式的方式</p>
-<h2 id="6-vue-2-和-vue-3-的区别-为什么使用-vue3"><a href="#6-vue-2-和-vue-3-的区别-为什么使用-vue3" class="headerlink" title="6 vue 2 和 vue 3 的区别 ,为什么使用 vue3"></a>6 vue 2 和 vue 3 的区别 ,为什么使用 vue3</h2><h4 id="2-Vue-组件是-Vue-的实例吗"><a href="#2-Vue-组件是-Vue-的实例吗" class="headerlink" title="2. Vue 组件是 Vue 的实例吗"></a>2. Vue 组件是 Vue 的实例吗</h4><h4 id="Vue-组件如何拆分"><a href="#Vue-组件如何拆分" class="headerlink" title="Vue 组件如何拆分"></a>Vue 组件如何拆分</h4><h3 id="Vue是如何单向数据流的"><a href="#Vue是如何单向数据流的" class="headerlink" title="Vue是如何单向数据流的"></a>Vue是如何单向数据流的</h3><p>每个子组件都是一个单独的单个, 组件的树形网络关系, 是解析时确定的  比如 parent ,children </p>
+<ol start="23">
+<li><p>Vue 组件间通信有哪几种方式<br>Vue 组件通信主要包括以下 3 类通信: 父子组件通信, 隔代组件通信, 兄弟组件通信<br>(1) props /$emit 适用父子组件通信<br>这种方法是 Vue 组件的基础<br>(2) ref 与 $parent/ $children 使用父子组件通信</p>
+<ul>
+<li>ref:如果在普通的 DOM 元素上使用,引用指向的就是 DOM 元素; 如果用在子组件上, 引用就指向组件实例</li>
+<li>$parent/ $children: 访问 父/子实例<br>(3) EventBus($emit /$on)<br>这种方法通过一个空的 Vue 实例作为中央事件总线(事件中心), 用它来触发事件和监听事件, 从而实现任何组件间的通信, 包括父子,隔代, 兄弟组件<br>(4) Vuex 使用于父子, 隔代,兄弟组件通信<br>vuex 是一个专为 Vue.js 应用程序开发的状态管理模式, 每一个 Vuex 应用的核心就是 store(仓库).store 基于上就是一个容器, 它包含着你的应用中大部分的状态(state)</li>
+</ul>
+</li>
+<li><p>vue 2 和 vue 3 的区别 ,为什么使用 vue3</p>
+</li>
+</ol>
+<ol start="24">
+<li>Vue 组件是 Vue 的实例吗</li>
+</ol>
+<ol start="25">
+<li>Vue 组件如何拆分</li>
+</ol>
+<ol start="26">
+<li>Vue是如何单向数据流的</li>
+</ol>
+<p>每个子组件都是一个单独的单个, 组件的树形网络关系, 是解析时确定的  比如 parent ,children </p>
 
   </div>
   <div class="post-footer">
