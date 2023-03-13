@@ -1065,14 +1065,6 @@ provide 选项允许我们指定我们想要提供给后代组件的数据/方�
 <li>类型 string| ELement</li>
 <li>限制: 只在用 new 创建实例时有效<br>详细:<br>提供一个在页面上已存在的 DOM 元素作为 Vue实例的挂载目标(挂载的意思就是 Vue 实例与页面发生关系),可以是 css 选择器, 也可以是一个 HTMLElement 实例</li>
 </ul>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><strong>vue 中 render 函数做了什么?</strong></p>
-<h3 id="1-如何在-非-vue-实例中使用-vuex-或者-router"><a href="#1-如何在-非-vue-实例中使用-vuex-或者-router" class="headerlink" title="1. 如何在 非 vue 实例中使用 vuex 或者 router"></a>1. 如何在 非 vue 实例中使用 vuex 或者 router</h3><p>直接在使用的地方引用就可以的</p>
-<h3 id="2-Vue-的基本原理"><a href="#2-Vue-的基本原理" class="headerlink" title="2. Vue 的基本原理"></a>2. Vue 的基本原理</h3><p>当一个 Vue 实例创建时, Vue 会遍历 data 的属性, 用 Object.defineProperty 将它们转换为 getter/setter, 并且在内部追踪相关依赖</p>
-<h3 id="3-vue-中的双向数据绑定是什么意思-单向数据绑定呢"><a href="#3-vue-中的双向数据绑定是什么意思-单向数据绑定呢" class="headerlink" title="3. vue 中的双向数据绑定是什么意思? 单向数据绑定呢"></a>3. vue 中的双向数据绑定是什么意思? 单向数据绑定呢</h3><h3 id="4-vue-中双向数据绑定的原理"><a href="#4-vue-中双向数据绑定的原理" class="headerlink" title="4. vue 中双向数据绑定的原理"></a>4. vue 中双向数据绑定的原理</h3><p>Vue.js 是采用数据劫持结合发布者-订阅者模式的方式</p>
-<h2 id="5-什么是-vue"><a href="#5-什么是-vue" class="headerlink" title="5. 什么是 vue ?"></a>5. 什么是 vue ?</h2><pre><code>Vue 是一款用于构建用户界面的 javascript 框架, 它基于标准 html,css 和 js 构建, 并提供了一套声明式的 ,组件化的变成模型,帮助你高效地开发用户界面. 无论是简单还是复杂的界面,Vue 都可以胜任
-</code></pre>
-<h2 id="6-vue-2-和-vue-3-的区别-为什么使用-vue3"><a href="#6-vue-2-和-vue-3-的区别-为什么使用-vue3" class="headerlink" title="6 vue 2 和 vue 3 的区别 ,为什么使用 vue3"></a>6 vue 2 和 vue 3 的区别 ,为什么使用 vue3</h2><h4 id="1-Vue-3-0-也要看一下"><a href="#1-Vue-3-0-也要看一下" class="headerlink" title="1. Vue 3.0 也要看一下"></a>1. Vue 3.0 也要看一下</h4><h4 id="2-Vue-组件是-Vue-的实例吗"><a href="#2-Vue-组件是-Vue-的实例吗" class="headerlink" title="2. Vue 组件是 Vue 的实例吗"></a>2. Vue 组件是 Vue 的实例吗</h4><h4 id="3-Vue-包含哪些东西"><a href="#3-Vue-包含哪些东西" class="headerlink" title="3 . Vue 包含哪些东西"></a>3 . Vue 包含哪些东西</h4><p>Vue-cli, vuex ,vuerouter(已经基本掌握) , axios , vue   全家桶 ,npm </p>
-<h4 id="Vue-组件如何拆分"><a href="#Vue-组件如何拆分" class="headerlink" title="Vue 组件如何拆分"></a>Vue 组件如何拆分</h4><h3 id="Vue是如何单向数据流的"><a href="#Vue是如何单向数据流的" class="headerlink" title="Vue是如何单向数据流的"></a>Vue是如何单向数据流的</h3><p>每个子组件都是一个单独的单个, 组件的树形网络关系, 是解析时确定的  比如 parent ,children </p>
 
   </div>
   <div class="post-footer">
