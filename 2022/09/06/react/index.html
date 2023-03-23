@@ -55,14 +55,14 @@
     <span class="post-time">2022-09-06</span>
   </div>
   <div class="post-content">
-    <h3 id="1-什么是React-谁开发的-主要作用-特点是什么"><a href="#1-什么是React-谁开发的-主要作用-特点是什么" class="headerlink" title="1. 什么是React?(谁开发的, 主要作用,特点是什么)"></a>1. 什么是React?(谁开发的, 主要作用,特点是什么)</h3><p>React 是一个由 Facebook 开发和维护的 JavaScript 库，用于构建用户界面。React 的主要特点是使用组件化和虚拟 DOM 的方式来使 UI 代码更加模块化、可维护和可重用。它使用 JSX 语法来描述组件的外观和行为，并使用 JavaScript 来控制其渲染和交互。React 通常与其他技术，如 Redux、GraphQL 和 React Native 等一起使用，以构建完整的 Web 应用程序、移动应用程序和其他类型的应用程序。React 也具有活跃的社区和生态系统，提供了许多有用的工具、库和插件，以支持 React 应用程序的开发和维护。</p>
+    <h3 id="1-什么是React-谁开发的-主要作用-特点是什么"><a href="#1-什么是React-谁开发的-主要作用-特点是什么" class="headerlink" title="1. 什么是React?(谁开发的, 主要作用,特点是什么)"></a>1. 什么是React?(谁开发的, 主要作用,特点是什么)</h3><p>  React 是一个由 Facebook 开发和维护的 JavaScript 库，用于构建用户界面。React 的主要特点是使用组件化和虚拟 DOM 的方式来使 UI 代码更加模块化、可维护和可重用。它使用 JSX 语法来描述组件的外观和行为，并使用 JavaScript 来控制其渲染和交互。React 通常与其他技术，如 Redux、GraphQL 和 React Native 等一起使用，以构建完整的 Web 应用程序、移动应用程序和其他类型的应用程序。React 也具有活跃的社区和生态系统，提供了许多有用的工具、库和插件，以支持 React 应用程序的开发和维护。</p>
 <h3 id="2-jsx-jsx-是什么-如何使用-使用时注意什么-解决了什么问题"><a href="#2-jsx-jsx-是什么-如何使用-使用时注意什么-解决了什么问题" class="headerlink" title="2. jsx (jsx 是什么, 如何使用, 使用时注意什么,解决了什么问题)"></a>2. jsx (jsx 是什么, 如何使用, 使用时注意什么,解决了什么问题)</h3><ol>
 <li>jsx是什么?<br>JSX 是一种 JavaScript 的语法扩展，用于描述 React 组件的 UI 层。它允许开发人员在 JavaScript 代码中编写 HTML 类似的结构和样式，使得组件的编写更加直观和易于维护。在 JSX 中，开发人员可以使用类似 HTML 的标记来描述组件的结构和内容，同时也可以在标记中嵌入 JavaScript 表达式来实现动态的 UI 效果</li>
 <li>jsx 会生成 ast 吗</li>
 </ol>
-<p>是的，JSX 代码会被转换为 AST（抽象语法树），然后再转换为普通的 JavaScript 代码。React 编译器会将 JSX 代码解析成一个 AST，然后将 AST 转换成 JavaScript 代码。<br>在 React 中，使用 Babel 编译器来转换 JSX 代码。Babel 是一个用于将新版 JavaScript 转换成向后兼容的代码的工具。它可以将 JSX 代码转换成常规的 JavaScript 代码，并将其打包成浏览器可以执行的 JavaScript 文件<br>以下是一个使用 Babel 编译器将 JSX 代码转换为 JavaScript 代码的示例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX 代码</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// 转换后的 JavaScript 代码</span></span><br><span class="line"><span class="keyword">const</span> element = React.createElement(<span class="string">&quot;h1&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>在这个例子中，Babel 编译器将 JSX 代码转换成了 React.createElement() 方法的调用，这个方法创建了一个描述组件的 JavaScript 对象，最终被用于渲染页面。<br>总之，JSX 代码被转换为 AST，然后再转换为 JavaScript 代码，这些代码最终被用于渲染页面。这个过程是由 Babel 编译器和 React 编译器共同完成的。jsx 最终生成 虚拟 dom, 虚拟 dom 就是 js 的一个描述元素结构和内容的对象</p>
+<p>  是的，JSX 代码会被转换为 AST（抽象语法树），然后再转换为普通的 JavaScript 代码。React 编译器会将 JSX 代码解析成一个 AST，然后将 AST 转换成 JavaScript 代码。<br>  在 React 中，使用 Babel 编译器来转换 JSX 代码。Babel 是一个用于将新版 JavaScript 转换成向后兼容的代码的工具。它可以将 JSX 代码转换成常规的 JavaScript 代码，并将其打包成浏览器可以执行的 JavaScript 文件<br>  以下是一个使用 Babel 编译器将 JSX 代码转换为 JavaScript 代码的示例：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX 代码</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// 转换后的 JavaScript 代码</span></span><br><span class="line"><span class="keyword">const</span> element = React.createElement(<span class="string">&quot;h1&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>  在这个例子中，Babel 编译器将 JSX 代码转换成了 React.createElement() 方法的调用，这个方法创建了一个描述组件的 JavaScript 对象，最终被用于渲染页面。<br>  总之，JSX 代码被转换为 AST，然后再转换为 JavaScript 代码，这些代码最终被用于渲染页面。这个过程是由 Babel 编译器和 React 编译器共同完成的。jsx 最终生成 虚拟 dom, 虚拟 dom 就是 js 的一个描述元素结构和内容的对象</p>
 <ol start="3">
 <li><p>react 为什么使用 jsx<br>JSX 是一种 JavaScript 语法扩展，它允许在 JavaScript 代码中直接嵌入 HTML 标记。这种语法扩展使得开发人员可以更直观地描述组件的结构和外观，同时也使得代码更易于阅读和理解。<br>使用 JSX 还有一些其他的好处。例如，它可以在编译时进行语法检查，避免一些常见的错误；它还可以提供更好的代码提示和自动完成功能，减少了开发人员的手动输入。<br>另外，使用 JSX 还可以使得 React 组件更容易进行测试和维护。由于 JSX 使得代码结构更加清晰和可读，因此开发人员可以更容易地定位和修复问题，从而提高了代码的可维护性和可测试性。<br>总的来说，React 使用 JSX 是为了提高开发效率和可读性，并提供更好的代码提示、自动完成、测试和维护功能。虽然 JSX 语法对一些开发人员来说可能有些陌生，但它的优点远远超过了缺点</p>
 </li>
@@ -74,7 +74,7 @@
 <li>标签中混入 js 表达式时要用 {},表达式很重要<br>一定注意区分: js 语句 于 js 表达式<ol>
 <li>表达式: 一个表达式会产生一个值,可以放在任何一个需要值的地方<br>下面这些都是表达式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(<span class="number">1</span>) a</span><br><span class="line">(<span class="number">2</span>) a+b</span><br><span class="line">(<span class="number">3</span>) arr.amp()</span><br><span class="line">(<span class="number">5</span>) <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>语句(代码)<br>下面这些都是语句(代码):<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)<span class="keyword">if</span>()&#123;&#125;</span><br><span class="line">(<span class="number">2</span>) <span class="keyword">for</span>()&#123;&#125;</span><br><span class="line">(<span class="number">3</span>)<span class="keyword">switch</span>()&#123;<span class="attr">case</span>:xxxx&#125; </span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">* 样式的类名的指定不要用 <span class="class"><span class="keyword">class</span>, 要用 <span class="title">className</span></span></span><br><span class="line"><span class="class">* <span class="title">style</span></span>=&#123;&#123;<span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span>&#125;&#125; , 内联样式, 要用 style = &#123;&#123;<span class="attr">key</span>:value&#125;&#125;</span><br><span class="line">* jsx 只能有一个根标签</span><br><span class="line">* 标签必须闭合</span><br><span class="line">* 标签首字母</span><br><span class="line">  (<span class="number">1</span>)若小写字母开头, 则将标签转为 html 中同名元素, 若 html 中无该标签对应的同名元素, 则报错</span><br><span class="line">  (<span class="number">2</span>)若大写字母开发, react 就去渲染对应的组件, 若组件没有定义则报错</span><br><span class="line">* jsx 中遍历的写法 (只能是数组不能是对象)</span><br><span class="line"> &lt;ul&gt;</span><br><span class="line">   &#123;</span><br><span class="line">     data.map(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">:key</span>=<span class="string">&quot;index&quot;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;</span><br><span class="line"> &lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">* 样式的类名的指定不要用 <span class="class"><span class="keyword">class</span>, 要用 <span class="title">className</span></span></span><br><span class="line"><span class="class">* <span class="title">style</span></span>=&#123;&#123;<span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span>&#125;&#125; , 内联样式, 要用 style = &#123;&#123;<span class="attr">key</span>:value&#125;&#125;</span><br><span class="line">* jsx 只能有一个根标签</span><br><span class="line">* 标签必须闭合</span><br><span class="line">* 标签首字母</span><br><span class="line">  (<span class="number">1</span>)若小写字母开头, 则将标签转为 html 中同名元素, 若 html 中无该标签对应的同名元素, 则报错</span><br><span class="line">  (<span class="number">2</span>)若大写字母开发, react 就去渲染对应的组件, 若组件没有定义则报错</span><br><span class="line">* jsx 中遍历的写法 (只能是数组不能是对象)</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &#123;</span><br><span class="line">      data.map(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">:key</span>=<span class="string">&quot;index&quot;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/ul&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="3-react-组件-组件是什么-为什么拆分组件-组件的功能有哪些-难点有哪些和模块的区别"><a href="#3-react-组件-组件是什么-为什么拆分组件-组件的功能有哪些-难点有哪些和模块的区别" class="headerlink" title="3. react 组件(组件是什么? 为什么拆分组件? 组件的功能有哪些, 难点有哪些和模块的区别)"></a>3. react 组件(组件是什么? 为什么拆分组件? 组件的功能有哪些, 难点有哪些和模块的区别)</h3></li>
 </ol>
 </li>
@@ -98,36 +98,17 @@
 </li>
 </ol>
 <ul>
-<li>(组件的状态是干什么的?如何往 state 放东西 如何修改状态?)<br>this.setState()  </li>
+<li>(组件的状态是干什么的?如何往 state 放东西 如何修改状态?)<br>this.setState()  调用时是合并的过程</li>
 <li> props</li>
-<li>事件, 如何添加事件<br> 事件名称 onClick.<br> 事件处理函数中处理函数.</li>
+<li>事件, 如何添加事件<br> 事件名称 onClick.<br> 事件处理函数中处理函数.<!-- 1. 组件实例的通信有几种方式 -->
+<!-- 2. 高阶组件 -->
+<!-- 3. react组件的生命周期(生命周期是什么?生命周期解决了什么问题, react 的生命周期有些, 生命周期都做了什么?) --></li>
 </ul>
 <ol>
-<li><p>组件实例的通信有几种方式</p>
+<li><p>挂载阶段(Mounting): 当组件实例被创建并插入到 DOM 中时执行以下声明周期方法:     - constructor(): 构造函数, 在组件被创建时调用. 在这里可以初始化组件的状态(state)和绑定事件处理函数(bind 方法)等     - getDerivedStateFromProps(props,state): 静态方法, 在组件挂载前调用,用于根据传入的 props 更新组件的 state     - render(): 渲染函数,将组件的虚拟 DOM 渲染到页面上     - componentDidMount(): 组件挂载后执行, 用于执行一些副作用, 如发送数据请求, 添加事件监听器等</p>
 </li>
-<li><p>高阶组件</p>
+<li><p>更新阶段(updating): 当组件的 props 或 state 发生变化时执行以下生命周期方法:     - static getDerivedStateFromProps(props, state):静态方法, 在组件更新前调用,用于根据传入的 props 更新组件的 state     - shouldComponentUpdate(nextProps,nextState): 在组件更新之前调用,用于判断组件是否需要重新渲染,返回值为 true 或 false     - render() : 渲染函数,将组件的虚拟 DOM 渲染到页面上     - getSnapshotBeforeUpdate(prevProps,prevState): 在组件更新前调用, 用户获取更新之前的 DOM 信息, 返回值会传递给     componentDidUpdate() 方法的第三个参数     - componentDidUpdate(prevProps, prevState, snapshot): 在组件更新后调用，用于执行一些副作用，如更新其他组件、处理 DOM 变更等</p>
 </li>
-<li><p>react组件的生命周期(生命周期是什么?生命周期解决了什么问题, react 的生命周期有些, 生命周期都做了什么?)</p>
-<ol>
-<li>挂载阶段(Mounting): 当组件实例被创建并插入到 DOM 中时执行以下声明周期方法:</li>
-</ol>
-<ul>
-<li>constructor(): 构造函数, 在组件被创建时调用. 在这里可以初始化组件的状态(state)和绑定事件处理函数(bind 方法)等</li>
-<li>getDerivedStateFromProps(props,state): 静态方法, 在组件挂载前调用,用于根据传入的 props 更新组件的 state</li>
-<li>render(): 渲染函数,将组件的虚拟 DOM 渲染到页面上</li>
-<li>componentDidMount(): 组件挂载后执行, 用于执行一些副作用, 如发送数据请求, 添加事件监听器等</li>
-</ul>
-<ol start="2">
-<li>更新阶段(updating): 当组件的 props 或 state 发生变化时执行以下生命周期方法:</li>
-</ol>
-<ul>
-<li>static getDerivedStateFromProps(props, state):静态方法, 在组件更新前调用,用于根据传入的 props 更新组件的 state</li>
-<li>shouldComponentUpdate(nextProps,nextState): 在组件更新之前调用,用于判断组件是否需要重新渲染,返回值为 true 或 false</li>
-<li>render() : 渲染函数,将组件的虚拟 DOM 渲染到页面上</li>
-<li>getSnapshotBeforeUpdate(prevProps,prevState): 在组件更新前调用, 用户获取更新之前的 DOM 信息, 返回值会传递给     componentDidUpdate() 方法的第三个参数</li>
-<li>componentDidUpdate(prevProps, prevState, snapshot): 在组件更新后调用，用于执行一些副作用，如更新其他组件、处理 DOM 变更等</li>
-</ul>
-<ol start="3">
 <li><p>卸载阶段(Unmounting): 当组件从 DOM 中移除时执行以下生命周期的方法:</p>
 <ul>
 <li><p>componentWillUnMount(): 组件卸载前执行,用于取消事件监听器, 清理定时器等<br>除了上述声明周期方法, React 还有一些其他的生命周期方法,如:</p>
@@ -138,8 +119,6 @@
 <h3 id="3-react-响应原理是什么"><a href="#3-react-响应原理是什么" class="headerlink" title="3. react 响应原理是什么?"></a>3. react 响应原理是什么?</h3><p>当组件的状态发生改变时, React 会重新渲染组件,并生成一颗新的虚拟 DOM树. React 会将新的虚拟 DOM 树与旧的虚拟 DOM 树进行比较,找出需要更新的节点, 并进行更新. 这个过程被称为调和.</p>
 </li>
 </ul>
-</li>
-</ol>
 </li>
 </ol>
 <p>React 在调和时, 采用了一些优化策略, 例如批量更新, DOMDiff 算法等. 通过这些优化, React 可以快速地更新 DOM, 提供性能</p>
