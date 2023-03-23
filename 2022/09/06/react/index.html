@@ -55,25 +55,60 @@
     <span class="post-time">2022-09-06</span>
   </div>
   <div class="post-content">
-    <h3 id="1-react-响应原理是什么"><a href="#1-react-响应原理是什么" class="headerlink" title="1. react 响应原理是什么?"></a>1. react 响应原理是什么?</h3><p>当组件的状态发生改变时, React 会重新渲染组件,并生成一颗新的虚拟 DOM树. React 会将新的虚拟 DOM 树与旧的虚拟 DOM 树进行比较,找出需要更新的节点, 并进行更新. 这个过程被称为调和.</p>
-<p>React 在调和时, 采用了一些优化策略, 例如批量更新, DOMDiff 算法等. 通过这些优化, React 可以快速地更新 DOM, 提供性能</p>
-<p>在 React 中, 状态更新是异步的. 当组件的状态发生改变时, React 会将状态的改变放入一个队列中,等到合适的时机再去更新组件. 这个过程被称为批量更新,批量更新可以避免不必要的重渲染,提供性能.</p>
-<p>在 React 中, 通过 <code>setState</code>方法来更新组件的状态. <code>setState</code> 方法接受一个对象或函数作为参数, 用于更新组件的状态. 在更新状态时, React 会自动触发组件的重新渲染, 从而更新组件的显示</p>
-<p>总的来说, React 的响应式原理是基于虚拟 DOM 和状态更新机制实现的. 通过虚拟 DOM 的比较和更新,React 可以高效的更新组件的显示.而通过状态更新机制. React 可以实现组件的响应式</p>
-<h3 id="2-react-如何监听数据变化"><a href="#2-react-如何监听数据变化" class="headerlink" title="2. react 如何监听数据变化"></a>2. react 如何监听数据变化</h3><p>在react 中监听数据变化的方式是通过组件的状态(state) 和属性(props)来实现的.<br>具体来说,可以采用以下几种方式:</p>
+    <h3 id="1-什么是React-谁开发的-主要作用-特点是什么"><a href="#1-什么是React-谁开发的-主要作用-特点是什么" class="headerlink" title="1. 什么是React?(谁开发的, 主要作用,特点是什么)"></a>1. 什么是React?(谁开发的, 主要作用,特点是什么)</h3><p>React 是一个由 Facebook 开发和维护的 JavaScript 库，用于构建用户界面。React 的主要特点是使用组件化和虚拟 DOM 的方式来使 UI 代码更加模块化、可维护和可重用。它使用 JSX 语法来描述组件的外观和行为，并使用 JavaScript 来控制其渲染和交互。React 通常与其他技术，如 Redux、GraphQL 和 React Native 等一起使用，以构建完整的 Web 应用程序、移动应用程序和其他类型的应用程序。React 也具有活跃的社区和生态系统，提供了许多有用的工具、库和插件，以支持 React 应用程序的开发和维护。</p>
+<h3 id="2-jsx-jsx-是什么-如何使用-使用时注意什么-解决了什么问题"><a href="#2-jsx-jsx-是什么-如何使用-使用时注意什么-解决了什么问题" class="headerlink" title="2. jsx (jsx 是什么, 如何使用, 使用时注意什么,解决了什么问题)"></a>2. jsx (jsx 是什么, 如何使用, 使用时注意什么,解决了什么问题)</h3><ol>
+<li>jsx是什么?<br>JSX 是一种 JavaScript 的语法扩展，用于描述 React 组件的 UI 层。它允许开发人员在 JavaScript 代码中编写 HTML 类似的结构和样式，使得组件的编写更加直观和易于维护。在 JSX 中，开发人员可以使用类似 HTML 的标记来描述组件的结构和内容，同时也可以在标记中嵌入 JavaScript 表达式来实现动态的 UI 效果</li>
+<li>jsx 会生成 ast 吗</li>
+</ol>
+<p>是的，JSX 代码会被转换为 AST（抽象语法树），然后再转换为普通的 JavaScript 代码。React 编译器会将 JSX 代码解析成一个 AST，然后将 AST 转换成 JavaScript 代码。<br>在 React 中，使用 Babel 编译器来转换 JSX 代码。Babel 是一个用于将新版 JavaScript 转换成向后兼容的代码的工具。它可以将 JSX 代码转换成常规的 JavaScript 代码，并将其打包成浏览器可以执行的 JavaScript 文件<br>以下是一个使用 Babel 编译器将 JSX 代码转换为 JavaScript 代码的示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX 代码</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// 转换后的 JavaScript 代码</span></span><br><span class="line"><span class="keyword">const</span> element = React.createElement(<span class="string">&quot;h1&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在这个例子中，Babel 编译器将 JSX 代码转换成了 React.createElement() 方法的调用，这个方法创建了一个描述组件的 JavaScript 对象，最终被用于渲染页面。<br>总之，JSX 代码被转换为 AST，然后再转换为 JavaScript 代码，这些代码最终被用于渲染页面。这个过程是由 Babel 编译器和 React 编译器共同完成的。jsx 最终生成 虚拟 dom, 虚拟 dom 就是 js 的一个描述元素结构和内容的对象</p>
+<ol start="3">
+<li><p>react 为什么使用 jsx<br>JSX 是一种 JavaScript 语法扩展，它允许在 JavaScript 代码中直接嵌入 HTML 标记。这种语法扩展使得开发人员可以更直观地描述组件的结构和外观，同时也使得代码更易于阅读和理解。<br>使用 JSX 还有一些其他的好处。例如，它可以在编译时进行语法检查，避免一些常见的错误；它还可以提供更好的代码提示和自动完成功能，减少了开发人员的手动输入。<br>另外，使用 JSX 还可以使得 React 组件更容易进行测试和维护。由于 JSX 使得代码结构更加清晰和可读，因此开发人员可以更容易地定位和修复问题，从而提高了代码的可维护性和可测试性。<br>总的来说，React 使用 JSX 是为了提高开发效率和可读性，并提供更好的代码提示、自动完成、测试和维护功能。虽然 JSX 语法对一些开发人员来说可能有些陌生，但它的优点远远超过了缺点</p>
+</li>
+<li><p>jsx 的语法规则: </p>
+</li>
+</ol>
 <ul>
-<li>setState() 方法<br>在 React 中, 通过调用组件的 setState()方法来更新组件的状态, 当调用 setState() 方法时, React 会自动重新渲染组件, 并将更新后的状态传递给组件. 在 setState() 方法中,可以使用回调函数来监听数据的变化,例如:</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.setState(&#123; <span class="attr">count</span>: <span class="built_in">this</span>.state.count + <span class="number">1</span> &#125;, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;count has been updated: &#x27;</span>, <span class="built_in">this</span>.state.count);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>componentWillReceiveProps() 生命周期函数<br>在React中, 组件的属性(props) 发生变化时,会触发 componentWillReceiveProps() 生命周期函数. 可以在这个函数中监听数据的变化, 例如:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">componentWillReceiveProps</span>(<span class="params">nextProps</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (nextProps.data !== <span class="built_in">this</span>.props.data) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;data has been updated: &#x27;</span>, nextProps.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>shouldComponentUpdate() 生命周期函数<br>在 React 中, 可以通过 shouldComponentUpdate() 生命周期函数来判断组件是否需要重新渲染. 可以在这个函数中监听数据的变化,例如</p>
+<li>定义虚拟 dom ,不用写引号</li>
+<li>标签中混入 js 表达式时要用 {},表达式很重要<br>一定注意区分: js 语句 于 js 表达式<ol>
+<li>表达式: 一个表达式会产生一个值,可以放在任何一个需要值的地方<br>下面这些都是表达式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(<span class="number">1</span>) a</span><br><span class="line">(<span class="number">2</span>) a+b</span><br><span class="line">(<span class="number">3</span>) arr.amp()</span><br><span class="line">(<span class="number">5</span>) <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>语句(代码)<br>下面这些都是语句(代码):<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)<span class="keyword">if</span>()&#123;&#125;</span><br><span class="line">(<span class="number">2</span>) <span class="keyword">for</span>()&#123;&#125;</span><br><span class="line">(<span class="number">3</span>)<span class="keyword">switch</span>()&#123;<span class="attr">case</span>:xxxx&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">* 样式的类名的指定不要用 <span class="class"><span class="keyword">class</span>, 要用 <span class="title">className</span></span></span><br><span class="line"><span class="class">* <span class="title">style</span></span>=&#123;&#123;<span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span>&#125;&#125; , 内联样式, 要用 style = &#123;&#123;<span class="attr">key</span>:value&#125;&#125;</span><br><span class="line">* jsx 只能有一个根标签</span><br><span class="line">* 标签必须闭合</span><br><span class="line">* 标签首字母</span><br><span class="line">  (<span class="number">1</span>)若小写字母开头, 则将标签转为 html 中同名元素, 若 html 中无该标签对应的同名元素, 则报错</span><br><span class="line">  (<span class="number">2</span>)若大写字母开发, react 就去渲染对应的组件, 若组件没有定义则报错</span><br><span class="line">* jsx 中遍历的写法 (只能是数组不能是对象)</span><br><span class="line"> &lt;ul&gt;</span><br><span class="line">   &#123;</span><br><span class="line">     data.map(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">:key</span>=<span class="string">&quot;index&quot;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;</span><br><span class="line"> &lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-react-组件-组件是什么-为什么拆分组件-组件的功能有哪些-难点有哪些和模块的区别"><a href="#3-react-组件-组件是什么-为什么拆分组件-组件的功能有哪些-难点有哪些和模块的区别" class="headerlink" title="3. react 组件(组件是什么? 为什么拆分组件? 组件的功能有哪些, 难点有哪些和模块的区别)"></a>3. react 组件(组件是什么? 为什么拆分组件? 组件的功能有哪些, 难点有哪些和模块的区别)</h3></li>
+</ol>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">shouldComponentUpdate</span>(<span class="params">nextProps, nextState</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (nextState.count !== <span class="built_in">this</span>.state.count) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;count has been updated: &#x27;</span>, nextState.count);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-react-生命周期"><a href="#3-react-生命周期" class="headerlink" title="3. react 生命周期"></a>3. react 生命周期</h3><ol>
+<ol>
+<li><p>js 模块<br>定义:<br>向外提供特定功能的 js 程序, 一般就是一个 js 文件<br>为什么要拆分模块:<br>随着业务逻辑增加,代码越来越多且复杂</p>
+</li>
+<li><p>组件<br>定义:用来实现局部功能效果的代码和资源的集合(html/css/js/image等等)<br>为什么:一个界面的功能更复杂<br>作用:复用编码,简化项目编程,提供运作效率</p>
+</li>
+<li><p>组件的类型<br>函数式组件,适用于简单组件的定义</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Demo</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>简单组件的定义<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line">ReactDom.render(<span class="xml"><span class="tag">&lt;<span class="name">Demo</span>/&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&#x27;test&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p> 执行了 ReactDom.render(<MyComponent/>)…..之后,发生了什么?</p>
+<ol>
+<li>React 解析了组件标签,找到了 MyComponent 组建,</li>
+<li>发现组件是使用函数定义的,随后调用该函数, 就将会的虚拟 DOM 转为真实 DOM,随后呈现在页面<br>类式组件,使用于复杂的组件的定义<br>类的复习:</li>
+<li>类的构造器函数和普通函数</li>
+<li>集成<br>总结: 类中的构造器不是必须写的,要对实例进行一些初始化的操作,如添加指定属性时采血<br>  如果 A 类继承了 B 类,且 A类中写了构造器函数, 那么 A 构造器函数中的 super 是必须要调用的<br>  类中所定义的方法,都是放在了类的原型对象上, 供实例去使用<br>组件是继承于 react.component</li>
+</ol>
+</li>
+<li><p>组件实例的三大属性</p>
+</li>
+</ol>
+<ul>
+<li>(组件的状态是干什么的?如何往 state 放东西 如何修改状态?)<br>this.setState()  </li>
+<li> props</li>
+<li>事件, 如何添加事件<br> 事件名称 onClick.<br> 事件处理函数中处理函数.</li>
+</ul>
+<ol>
+<li><p>组件实例的通信有几种方式</p>
+</li>
+<li><p>高阶组件</p>
+</li>
+<li><p>react组件的生命周期(生命周期是什么?生命周期解决了什么问题, react 的生命周期有些, 生命周期都做了什么?)</p>
+<ol>
 <li>挂载阶段(Mounting): 当组件实例被创建并插入到 DOM 中时执行以下声明周期方法:</li>
 </ol>
 <ul>
@@ -100,22 +135,40 @@
 <li><p>static getDerivedStateFromError(error): 静态方法，在组件内部发生错误时调用，用于根据错误更新组件的 state。</p>
 </li>
 <li><p>componentDidCatch(error, info): 在组件内部发生错误后调用，用于处理错误信息</p>
-<h3 id="4-vue-和-react-中父子组件传递有哪些不同"><a href="#4-vue-和-react-中父子组件传递有哪些不同" class="headerlink" title="4. vue  和 react 中父子组件传递有哪些不同?"></a>4. vue  和 react 中父子组件传递有哪些不同?</h3></li>
+<h3 id="3-react-响应原理是什么"><a href="#3-react-响应原理是什么" class="headerlink" title="3. react 响应原理是什么?"></a>3. react 响应原理是什么?</h3><p>当组件的状态发生改变时, React 会重新渲染组件,并生成一颗新的虚拟 DOM树. React 会将新的虚拟 DOM 树与旧的虚拟 DOM 树进行比较,找出需要更新的节点, 并进行更新. 这个过程被称为调和.</p>
+</li>
 </ul>
 </li>
 </ol>
-<p>在 Vue 中, 父组件向子组件传递数据通常使用 <code>props</code>, 即将数据以属性的形式传递给子组件. 子组件通过 <code>this.$props</code> 和<code>this.$attrs</code> 来获取父组件传递过来的数据. 另外, Vue 中也可以使用 <code>provide</code> 和<code>inject</code> 来进行跨级组件的数据传递.</p>
+</li>
+</ol>
+<p>React 在调和时, 采用了一些优化策略, 例如批量更新, DOMDiff 算法等. 通过这些优化, React 可以快速地更新 DOM, 提供性能</p>
+<p>在 React 中, 状态更新是异步的. 当组件的状态发生改变时, React 会将状态的改变放入一个队列中,等到合适的时机再去更新组件. 这个过程被称为批量更新,批量更新可以避免不必要的重渲染,提供性能.</p>
+<p>在 React 中, 通过 <code>setState</code>方法来更新组件的状态. <code>setState</code> 方法接受一个对象或函数作为参数, 用于更新组件的状态. 在更新状态时, React 会自动触发组件的重新渲染, 从而更新组件的显示</p>
+<p>总的来说, React 的响应式原理是基于虚拟 DOM 和状态更新机制实现的. 通过虚拟 DOM 的比较和更新,React 可以高效的更新组件的显示.而通过状态更新机制. React 可以实现组件的响应式</p>
+<h3 id="4-react-如何监听数据变化"><a href="#4-react-如何监听数据变化" class="headerlink" title="4. react 如何监听数据变化"></a>4. react 如何监听数据变化</h3><p>在react 中监听数据变化的方式是通过组件的状态(state) 和属性(props)来实现的.<br>具体来说,可以采用以下几种方式:</p>
+<ul>
+<li>setState() 方法<br>在 React 中, 通过调用组件的 setState()方法来更新组件的状态, 当调用 setState() 方法时, React 会自动重新渲染组件, 并将更新后的状态传递给组件. 在 setState() 方法中,可以使用回调函数来监听数据的变化,例如:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.setState(&#123; <span class="attr">count</span>: <span class="built_in">this</span>.state.count + <span class="number">1</span> &#125;, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;count has been updated: &#x27;</span>, <span class="built_in">this</span>.state.count);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>componentWillReceiveProps() 生命周期函数<br>在React中, 组件的属性(props) 发生变化时,会触发 componentWillReceiveProps() 生命周期函数. 可以在这个函数中监听数据的变化, 例如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">componentWillReceiveProps</span>(<span class="params">nextProps</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (nextProps.data !== <span class="built_in">this</span>.props.data) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;data has been updated: &#x27;</span>, nextProps.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>shouldComponentUpdate() 生命周期函数<br>在 React 中, 可以通过 shouldComponentUpdate() 生命周期函数来判断组件是否需要重新渲染. 可以在这个函数中监听数据的变化,例如</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">shouldComponentUpdate</span>(<span class="params">nextProps, nextState</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (nextState.count !== <span class="built_in">this</span>.state.count) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;count has been updated: &#x27;</span>, nextState.count);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-vue-和-react-中父子组件传递有哪些不同"><a href="#4-vue-和-react-中父子组件传递有哪些不同" class="headerlink" title="4. vue 和 react 中父子组件传递有哪些不同?"></a>4. vue 和 react 中父子组件传递有哪些不同?</h3><p>在 Vue 中, 父组件向子组件传递数据通常使用 <code>props</code>, 即将数据以属性的形式传递给子组件. 子组件通过 <code>this.$props</code> 和<code>this.$attrs</code> 来获取父组件传递过来的数据. 另外, Vue 中也可以使用 <code>provide</code> 和<code>inject</code> 来进行跨级组件的数据传递.</p>
 <p>在 React 中, 父组件向子组件传递数据也可以使用<code>props</code>, 即将数据以属性的形式传递给子组件. 子组件通过 <code>props</code> 来获取父组件传递过来的数据. 另外, 在React 中也可以使用  <code>context</code>来进行跨级组件的数据传递</p>
 <p>Vue 和 React 在父子组件传递数据的方式上有些不同，但是它们的思想是一致的，都是通过组件之间的数据传递来实现组件之间的通信。需要注意的是，在 Vue 中，父组件向子组件传递数据时，数据是单向流动的，即父组件可以向子组件传递数据，但子组件不能直接修改父组件的数据，只能通过 $emit 方法向父组件发送事件来触发父组件的方法从而改变数据。而在 React 中，由于所有的组件都是可变的，因此可以通过回调函数或 context 来实现子组件修改父组件的数据(这个不一定全对)</p>
-<h3 id="5-React-如何绑定事件-和-vue-以及原生事件的不同"><a href="#5-React-如何绑定事件-和-vue-以及原生事件的不同" class="headerlink" title="5.React 如何绑定事件, 和 vue 以及原生事件的不同?"></a>5.React 如何绑定事件, 和 vue 以及原生事件的不同?</h3><p>React 的事件机制是基于合成事件实现的.合成事件是 React封装的跨浏览器的事件系统, 它在底层使用了事件委托和事件池来优化性能</p>
+<h3 id="5-React组件如何绑定事件-和-vue-以及原生事件的不同"><a href="#5-React组件如何绑定事件-和-vue-以及原生事件的不同" class="headerlink" title="5.React组件如何绑定事件, 和 vue 以及原生事件的不同?"></a>5.React组件如何绑定事件, 和 vue 以及原生事件的不同?</h3><p>React 的事件机制是基于合成事件实现的.合成事件是 React封装的跨浏览器的事件系统, 它在底层使用了事件委托和事件池来优化性能</p>
 <p>事件委托是一种常见的优化手段, 它可以将事件处理函数绑定到容器元素上, 然后在容器元素内部捕获所有事件, 通过判断事件来源来执行相应的事件处理函数. 这个可以避免在每个子元素都绑定事件处理函数. 从而减少内存占用和事件注册时间</p>
 <h3 id="6-在-React-中使用-原生事件不能冒泡-React-事件的原因"><a href="#6-在-React-中使用-原生事件不能冒泡-React-事件的原因" class="headerlink" title="6.在 React 中使用 原生事件不能冒泡 React 事件的原因"></a>6.在 React 中使用 原生事件不能冒泡 React 事件的原因</h3><p>在 React 中使用原生事件无法冒泡到 React 组件的事件处理程序，是因为 React 使用了一种叫做“合成事件”的技术来处理事件。合成事件是 React 提供的一种事件系统，它封装了原生事件，并提供了一些额外的功能，比如自动绑定 this、跨浏览器兼容性等。</p>
 <p>React 为了提高性能，会在组件的根节点上绑定一些原生事件，例如 onClick、onKeyDown 等。当这些事件被触发时，React 会生成一个合成事件，并调用与之相关联的组件的事件处理程序。合成事件不会冒泡到 DOM 树上，而是通过事件委派的方式交由 React 进行处理。</p>
 <p>因此，如果在 React 组件中使用原生事件来处理事件，该事件不会被传递给 React 的事件处理程序。这意味着，无法通过原生事件来触发 React 组件的状态更新、重渲染等操作，也无法与其他 React 组件共享状态。如果需要在 React 组件中使用原生事件，可以通过手动触发 React 组件的事件处理程序来实现</p>
 <h3 id="7-react-中对-jsx-的理解"><a href="#7-react-中对-jsx-的理解" class="headerlink" title="7. react 中对 jsx 的理解"></a>7. react 中对 jsx 的理解</h3><p>jsx 是 React 中一种用于描述用户界面的语法, 它允许我们使用类似于 HTML 的标记来描述 ui 组件,并且可以在其中迁入 js 代码, 🙆🏻‍♀️组件的逻辑和渲染可以更加灵活,</p>
-<h3 id="8-react-中的-React-createElement-都做了什么"><a href="#8-react-中的-React-createElement-都做了什么" class="headerlink" title="8 . react 中的 React.createElement 都做了什么"></a>8 . react 中的 React.createElement 都做了什么</h3><h3 id="9-ReactDom-render-做了什么呢"><a href="#9-ReactDom-render-做了什么呢" class="headerlink" title="9.ReactDom.render 做了什么呢?"></a>9.ReactDom.render 做了什么呢?</h3><p>ReactDOM.render() 是 React 中的一个核心方法，用于将 React 元素渲染到 DOM 中。<br>它的主要作用是将 React 元素转换为真实的 DOM 节点, 并将其插入到指定的容器中.</p>
-<p>具体来说: </p>
-<p>ReactDOM,</p>
+<h3 id="8-react-中的-React-createElement-都做了什么"><a href="#8-react-中的-React-createElement-都做了什么" class="headerlink" title="8 . react 中的 React.createElement 都做了什么"></a>8 . react 中的 React.createElement 都做了什么</h3><h3 id="9-ReactDom-render-做了什么呢"><a href="#9-ReactDom-render-做了什么呢" class="headerlink" title="9.ReactDom.render 做了什么呢?"></a>9.ReactDom.render 做了什么呢?</h3><p>ReactDOM.render() 是 React 中的一个核心方法，用于将 React 元素渲染到 DOM 中。<br>它的主要作用是将 React 元素转换为真实的 DOM 节点, 并将其插入到指定的容器中,其实就是将虚拟 dom 转化为真实 dom 并且上树的过程</p>
 <h3 id="React-的渲染流程可以分为两个阶段-初始化阶段和更新阶段"><a href="#React-的渲染流程可以分为两个阶段-初始化阶段和更新阶段" class="headerlink" title="React 的渲染流程可以分为两个阶段: 初始化阶段和更新阶段"></a>React 的渲染流程可以分为两个阶段: 初始化阶段和更新阶段</h3><ol>
 <li>初始化阶段:<ul>
 <li>创建组件: 当 React 遇到组件标签时, 会创建对应的组件实例, 并将组件的 props 传递给组件实例.</li>
