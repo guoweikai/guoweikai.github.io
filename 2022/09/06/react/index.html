@@ -55,10 +55,12 @@
     <span class="post-time">2022-09-06</span>
   </div>
   <div class="post-content">
-    <h3 id="1-什么是React-谁开发的-主要作用-特点是什么"><a href="#1-什么是React-谁开发的-主要作用-特点是什么" class="headerlink" title="1. 什么是React?(谁开发的, 主要作用,特点是什么)"></a>1. 什么是React?(谁开发的, 主要作用,特点是什么)</h3><p>  React 是一个由 Facebook 开发和维护的 JavaScript 库，用于构建用户界面。React 的主要特点是使用组件化和虚拟 DOM 的方式来使 UI 代码更加模块化、可维护和可重用。它使用 JSX 语法来描述组件的外观和行为，并使用 JavaScript 来控制其渲染和交互。React 通常与其他技术，如 Redux、GraphQL 和 React Native 等一起使用，以构建完整的 Web 应用程序、移动应用程序和其他类型的应用程序。React 也具有活跃的社区和生态系统，提供了许多有用的工具、库和插件，以支持 React 应用程序的开发和维护。</p>
+    <h3 id="1-什么是React-谁开发的-主要作用-特点是什么"><a href="#1-什么是React-谁开发的-主要作用-特点是什么" class="headerlink" title="1. 什么是React?(谁开发的, 主要作用,特点是什么)"></a>1. 什么是React?(谁开发的, 主要作用,特点是什么)</h3><p>  React 是一个由 Facebook 开发和维护的 JavaScript 库，用于构建用户界面。React 的主要特点是使用组件化和虚拟 DOM 的方式来使 UI 代码更加模块化、可维护和可重用。它使用 JSX 语法来描述组件的外观和行为，并使用 JavaScript 来控制其渲染和交互。</p>
 <h3 id="2-jsx-jsx-是什么-如何使用-使用时注意什么-解决了什么问题"><a href="#2-jsx-jsx-是什么-如何使用-使用时注意什么-解决了什么问题" class="headerlink" title="2. jsx (jsx 是什么, 如何使用, 使用时注意什么,解决了什么问题)"></a>2. jsx (jsx 是什么, 如何使用, 使用时注意什么,解决了什么问题)</h3><ol>
-<li>jsx是什么?<br>JSX 是一种 JavaScript 的语法扩展，用于描述 React 组件的 UI 层。它允许开发人员在 JavaScript 代码中编写 HTML 类似的结构和样式，使得组件的编写更加直观和易于维护。在 JSX 中，开发人员可以使用类似 HTML 的标记来描述组件的结构和内容，同时也可以在标记中嵌入 JavaScript 表达式来实现动态的 UI 效果</li>
-<li>jsx 会生成 ast 吗<br>是的，JSX 代码会被转换为 AST（抽象语法树），然后再转换为普通的 JavaScript 代码。React 编译器会将 JSX 代码解析成一个 AST，然后将 AST 转换成 JavaScript 代码。<br>在 React 中，使用 Babel 编译器来转换 JSX 代码。Babel 是一个用于将新版 JavaScript 转换成向后兼容的代码的工具。它可以将 JSX 代码转换成常规的 JavaScript 代码，并将其打包成浏览器可以执行的 JavaScript 文件<br>以下是一个使用 Babel 编译器将 JSX 代码转换为 JavaScript 代码的示例：</li>
+<li><p>jsx是什么?<br>JSX 是一种 JavaScript 的语法扩展，用于描述 React 组件的 UI 层。它允许开发人员在 JavaScript 代码中编写 HTML 类似的结构和样式，使得组件的编写更加直观和易于维护。在 JSX 中，开发人员可以使用类似 HTML 的标记来描述组件的结构和内容，同时也可以在标记中嵌入 JavaScript 表达式来实现动态的 UI 效果</p>
+</li>
+<li><p>jsx 会生成 ast 吗<br>是的，JSX 代码会被转换为 AST（抽象语法树），然后再转换为普通的 JavaScript 代码。React 编译器会将 JSX 代码解析成一个 AST，然后将 AST 转换成 JavaScript 代码。<br>在 React 中，使用 Babel 编译器来转换 JSX 代码。Babel 是一个用于将新版 JavaScript 转换成向后兼容的代码的工具。它可以将 JSX 代码转换成常规的 JavaScript 代码，并将其打包成浏览器可以执行的 JavaScript 文件<br>以下是一个使用 Babel 编译器将 JSX 代码转换为 JavaScript 代码的示例：</p>
+</li>
 </ol>
 <pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX 代码</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// 转换后的 JavaScript 代码</span></span><br><span class="line"><span class="keyword">const</span> element = React.createElement(<span class="string">&quot;h1&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -199,7 +201,7 @@
 </ol>
 </li>
 </ul>
-<h3 id="React-create-后给到了谁"><a href="#React-create-后给到了谁" class="headerlink" title="React.create 后给到了谁?"></a>React.create 后给到了谁?</h3><h3 id="react-hook"><a href="#react-hook" class="headerlink" title="react hook?"></a>react hook?</h3><h3 id="react-的全家桶"><a href="#react-的全家桶" class="headerlink" title="react 的全家桶?"></a>react 的全家桶?</h3><h3 id="React-和-Vue-渲染流程的区别"><a href="#React-和-Vue-渲染流程的区别" class="headerlink" title="React 和 Vue 渲染流程的区别?"></a>React 和 Vue 渲染流程的区别?</h3>
+<h3 id="React-create-后给到了谁"><a href="#React-create-后给到了谁" class="headerlink" title="React.create 后给到了谁?"></a>React.create 后给到了谁?</h3><h3 id="react-hook"><a href="#react-hook" class="headerlink" title="react hook?"></a>react hook?</h3><h3 id="react-的全家桶"><a href="#react-的全家桶" class="headerlink" title="react 的全家桶?"></a>react 的全家桶?</h3><h3 id="React-和-Vue-渲染流程的区别"><a href="#React-和-Vue-渲染流程的区别" class="headerlink" title="React 和 Vue 渲染流程的区别?"></a>React 和 Vue 渲染流程的区别?</h3><h3 id="将内容思维导图"><a href="#将内容思维导图" class="headerlink" title="将内容思维导图"></a>将内容思维导图</h3>
   </div>
   <div class="post-footer">
     
