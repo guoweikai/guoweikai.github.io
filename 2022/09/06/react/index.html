@@ -90,35 +90,43 @@
    为什么:一个界面的功能更复杂
    作用:复用编码,简化项目编程,提供运作效率
 3. 组件的类型
-   函数式组件,适用于简单组件的定义
+    函数式组件,适用于简单组件的定义
 
-     <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Demo</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>简单组件的定义<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line">ReactDom.render(<span class="xml"><span class="tag">&lt;<span class="name">Demo</span>/&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&#x27;test&#x27;</span>))</span><br></pre></td></tr></table></figure>
-     执行了 ReactDom.render(&lt;MyComponent/&gt;).....之后,发生了什么?
-     1. React 解析了组件标签,找到了 MyComponent 组建,
-     2. 发现组件是使用函数定义的,随后调用该函数, 就将会的虚拟 DOM 转为真实 DOM,随后呈现在页面
-   类式组件,使用于复杂的组件的定义
-     类的复习:
-     3. 类的构造器函数和普通函数
-     4. 集成 
-     总结: 类中的构造器不是必须写的,要对实例进行一些初始化的操作,如添加指定属性时采血
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Demo</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>简单组件的定义<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line">ReactDom.render(<span class="xml"><span class="tag">&lt;<span class="name">Demo</span>/&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&#x27;test&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+        执行了 ReactDom.render(&lt;MyComponent/&gt;).....之后,发生了什么?
+        1. React 解析了组件标签,找到了 MyComponent 组建,
+        2. 发现组件是使用函数定义的,随后调用该函数, 就将会的虚拟 DOM 转为真实 DOM,随后呈现在页面
+        类式组件,使用于复杂的组件的定义
+     类的组件:
+        类的构造器函数和普通函数
+        集成 
+        总结: 类中的构造器不是必须写的,要对实例进行一些初始化的操作,如添加指定属性时采血
          如果 A 类继承了 B 类,且 A类中写了构造器函数, 那么 A 构造器函数中的 super 是必须要调用的
          类中所定义的方法,都是放在了类的原型对象上, 供实例去使用
-     组件是继承于 react.component
+        组件是继承于 react.component
 4. 组件实例的三大属性
-   - (组件的状态是干什么的?如何往 state 放东西 如何修改状态?)
+   - state  (组件的状态是干什么的?如何往 state 放东西 如何修改状态?)
      this.setState()  调用时是合并的过程,并且是异步的, 可以不适用构造函数, 以及使用构造函数的问题
    -  props
       props 传递参数
       props 传递参数简写 &#123;...props&#125;
       props 的进行类型限制
-   -  事件, 如何添加事件
+   - 事件, 如何添加事件
      事件名称 onClick.
      事件处理函数中处理函数.
    - refs:
-     refs 的字符串定义
-     refs 的函数回调中进行使用
-     refs 的 createRef 的使用
+     refs 的字符串定义, 目前不建议使用,后期会在某个版本中删除, 因为有内存消耗的问题.
+     refs 的函数回调中进行使用, refs 的回调函数在更新时被调用两次.  直接写成内联的,和类绑定的回调.
+     refs 的 createRef 的使用: React.createRef 调用后可以返回一个容器,该容器可以存储被 ref 表示的节点, 该容器是专人专用
+    
+
+     <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myRef = React.createRef()</span><br><span class="line"><span class="built_in">this</span>.myRef.current.value</span><br></pre></td></tr></table></figure>
      
+5. 受控组件和非受控组件
+   表单的案例, 表单触发页面跳转 
+   非受控组件: 现用现取
+   受控组件:  添加
 </code></pre>
 <!-- 1. 组件实例的通信有几种方式 -->
 <!-- 2. 高阶组件 -->
